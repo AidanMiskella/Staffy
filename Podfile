@@ -8,5 +8,6 @@ target 'Staffy' do
   # Pods for Staffy
   pod 'Firebase/Firestore'
   pod 'Firebase/Core'
+  pod 'Firebase/Auth'
 
 end
