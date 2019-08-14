@@ -258,13 +258,13 @@
                                 <rect key="frame" x="46" y="615" width="20" height="100"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="Yok-5f-ETd">
-                                <rect key="frame" x="46" y="568" width="20" height="75"/>
+                                <rect key="frame" x="46" y="567.5" width="20" height="75"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="gHu-kb-VGh">
                                 <rect key="frame" x="46" y="535" width="20" height="20"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock" translatesAutoresizingMaskIntoConstraints="NO" id="i0r-md-PjA">
-                                <rect key="frame" x="46" y="688" width="20" height="75"/>
+                                <rect key="frame" x="46" y="687.5" width="20" height="75"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

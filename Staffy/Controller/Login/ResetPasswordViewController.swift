@@ -8,8 +8,9 @@
 
 import UIKit
 import FirebaseAuth
+import SCLAlertView
 
-class ResetPasswordViewController: UIViewController, AlertViewDelegate {
+class ResetPasswordViewController: UIViewController {
 
     @IBOutlet weak var topImageHeight: NSLayoutConstraint!
     
@@ -23,15 +24,9 @@ class ResetPasswordViewController: UIViewController, AlertViewDelegate {
     
     @IBOutlet weak var emailImage: UIImageView!
     
-    var alertView: AlertView?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        alertView = AlertView()
-        alertView?.delegate = self
-        
         setUpElements()
     }
     
@@ -39,12 +34,12 @@ class ResetPasswordViewController: UIViewController, AlertViewDelegate {
         
         errorLabel.alpha = 0
         
-        Utilities.styleTextField(emailText, .textField, .black)
-        Utilities.styleFilledButton(submitButton, .largeLoginButton, .white, .lightBlue, 20.0)
-        Utilities.styleLabel(errorLabel, .loginError, .red)
-        Utilities.styleLabel(titleLabel, .loginTitle, .lightGray)
+        Utilities.styleTextField(textfield: emailText, font: .textField, fontColor: .black)
+        Utilities.styleFilledButton(button: submitButton, font: .largeLoginButton, fontColor: .white, backgroundColor: .lightBlue, cornerRadius: 20.0)
+        Utilities.styleLabel(label: errorLabel, font: .loginError, fontColor: .red)
+        Utilities.styleLabel(label: titleLabel, font: .loginTitle, fontColor: .lightGray)
         
-        emailImage.tintColor = .lightGray
+        Utilities.styleImage(imageView: emailImage, image: "envelope", imageColor: .lightGray)
         
         topImageHeight.constant = UIScreen.main.bounds.height / 2.25
     }
@@ -61,7 +56,13 @@ class ResetPasswordViewController: UIViewController, AlertViewDelegate {
                 self.errorLabel.text = errorCode?.errorMessage
             } else {
                 
-                self.alertView?.showAlert(title: "Email Reset", message: "We have sent you an email to reset your password", image: UIImageView(), buttonText: "Return to login")
+                let alertView = SCLAlertView(appearance: Constants.AlertView.appearance)
+                alertView.addButton("Login", backgroundColor: .lightBlue, textColor: .white) {
+                    
+                    self.didClickButton()
+                }
+                
+                alertView.showSuccess("Check your email", subTitle: "We have sent an email to \(email) as you have requested to change your password.", animationStyle: .rightToLeft)
             }
         }
     }
@@ -69,7 +70,7 @@ class ResetPasswordViewController: UIViewController, AlertViewDelegate {
     func didClickButton() {
         
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
-        let loginVC = storyboard.instantiateViewController(withIdentifier: "loginRoot")
+        let loginVC = storyboard.instantiateViewController(withIdentifier: Constants.Storyboard.loginViewController)
         self.present(loginVC, animated: true, completion: nil)
     }
 }

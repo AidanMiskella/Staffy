@@ -20,25 +20,14 @@ class HomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+
         loginHandle = Auth.auth().addStateDidChangeListener({ (auth, user) in
             if user == nil || user?.isEmailVerified == false {
                 
                 let storyboard = UIStoryboard(name: "Login", bundle: nil)
-                let loginVC = storyboard.instantiateViewController(withIdentifier: "loginRoot")
+                let loginVC = storyboard.instantiateViewController(withIdentifier: Constants.Storyboard.loginViewController)
                 self.present(loginVC, animated: true, completion: nil)
             }
         })
-    }
-    
-    @IBAction func logoutTapped(_ sender: UIButton) {
-        
-        do {
-            
-            try Auth.auth().signOut()
-        } catch let signoutError as NSError {
-            
-            debugPrint("Error signing out: \(signoutError)")
-        }
     }
 }

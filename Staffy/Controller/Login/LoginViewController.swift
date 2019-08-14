@@ -34,7 +34,6 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         setUpElements()
     }
     
@@ -42,16 +41,16 @@ class LoginViewController: UIViewController {
         
         errorLabel.alpha = 0
         
-        Utilities.styleTextField(emailText, .textField, .black)
-        Utilities.styleTextField(passwordText, .textField, .black)
-        Utilities.styleHollowButton(loginButton, .largeLoginButton, .lightBlue, 2.0, 20.0)
-        Utilities.styleHollowButton(forgotPasswordButton, .smallLoginButton, .lightBlue, 0.0, 0.0)
-        Utilities.styleFilledButton(registerButton, .largeLoginButton, .white, .lightBlue, 20.0)
-        Utilities.styleLabel(errorLabel, .loginError, .red)
-        Utilities.styleLabel(titleLabel, .loginTitle, .lightGray)
+        Utilities.styleTextField(textfield: emailText, font: .textField, fontColor: .black)
+        Utilities.styleTextField(textfield: passwordText, font: .textField, fontColor: .black)
+        Utilities.styleHollowButton(button: loginButton, font: .largeLoginButton, fontColor: .lightBlue, borderWidth: 2.0, cornerRadius: 20.0)
+        Utilities.styleHollowButton(button: forgotPasswordButton, font: .smallLoginButton, fontColor: .lightBlue, borderWidth: 0.0, cornerRadius: 0.0)
+        Utilities.styleFilledButton(button: registerButton, font: .largeLoginButton, fontColor: .white, backgroundColor: .lightBlue, cornerRadius: 20.0)
+        Utilities.styleLabel(label: errorLabel, font: .loginError, fontColor: .red)
+        Utilities.styleLabel(label: titleLabel, font: .loginTitle, fontColor: .lightGray)
         
-        emailImage.tintColor = .lightGray
-        passwordImage.tintColor = .lightGray
+        Utilities.styleImage(imageView: emailImage, image: "envelope", imageColor: .lightGray)
+        Utilities.styleImage(imageView: passwordImage, image: "lock", imageColor: .lightGray)
         
         topImageHeight.constant = UIScreen.main.bounds.height / 2.25
         
@@ -79,7 +78,7 @@ class LoginViewController: UIViewController {
                     if authResult.user.isEmailVerified {
                         
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        let homeVC = storyboard.instantiateViewController(withIdentifier: "homeVC")
+                        let homeVC = storyboard.instantiateViewController(withIdentifier: Constants.Storyboard.main)
                         self.present(homeVC, animated: true, completion: nil)
                     } else {
                         

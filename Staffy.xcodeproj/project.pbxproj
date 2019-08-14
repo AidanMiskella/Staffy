@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		212FB1B1EAD2BABC870381D5 /* Pods_Staffy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52C6C51D2F79BF24B9E3E8D /* Pods_Staffy.framework */; };
-		7402A73922F6403900E2C78B /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7402A73822F6403800E2C78B /* AlertView.xib */; };
-		7402A73B22F6407D00E2C78B /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7402A73A22F6407D00E2C78B /* AlertView.swift */; };
 		7402B71222F7442F000454D1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7402B71122F7442F000454D1 /* HomeViewController.swift */; };
+		7403CFC822F8A15100C6C8D1 /* ErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7403CFC722F8A15100C6C8D1 /* ErrorExtension.swift */; };
+		7403CFCA22F8A16000C6C8D1 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7403CFC922F8A16000C6C8D1 /* FontExtension.swift */; };
+		7403CFCC22F8A16D00C6C8D1 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7403CFCB22F8A16D00C6C8D1 /* ColorExtension.swift */; };
 		7411E32922F0BA3200E3830A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7411E32822F0BA3200E3830A /* AppDelegate.swift */; };
 		7411E32E22F0BA3200E3830A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7411E32C22F0BA3200E3830A /* Main.storyboard */; };
 		7411E33022F0BA3500E3830A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7411E32F22F0BA3500E3830A /* Assets.xcassets */; };
@@ -20,6 +21,11 @@
 		743BE9E822F0C5A6006A2F6E /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE9E722F0C5A6006A2F6E /* Utilities.swift */; };
 		743BE9EA22F0C5C6006A2F6E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE9E922F0C5C6006A2F6E /* Constants.swift */; };
 		743BE9EC22F0FF10006A2F6E /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE9EB22F0FF10006A2F6E /* RegisterViewController.swift */; };
+		74B23E8022F8ABE30058B5D4 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74B23E7F22F8ABE30058B5D4 /* Home.storyboard */; };
+		74B23E8422F8AD980058B5D4 /* MyJobsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B23E8322F8AD980058B5D4 /* MyJobsViewController.swift */; };
+		74B23E8622F8ADA50058B5D4 /* MyJobs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74B23E8522F8ADA50058B5D4 /* MyJobs.storyboard */; };
+		74B23E8822F8ADDB0058B5D4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B23E8722F8ADDB0058B5D4 /* ProfileViewController.swift */; };
+		74B23E8A22F8ADEA0058B5D4 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74B23E8922F8ADEA0058B5D4 /* Profile.storyboard */; };
 		74EDBC0222F0BC19007B65B8 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74EDBC0122F0BC19007B65B8 /* Login.storyboard */; };
 		74EDBC0422F0BD01007B65B8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EDBC0322F0BD01007B65B8 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
@@ -27,9 +33,10 @@
 /* Begin PBXFileReference section */
 		2F15A6D682DD4735EC998F1B /* Pods-Staffy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Staffy.release.xcconfig"; path = "Target Support Files/Pods-Staffy/Pods-Staffy.release.xcconfig"; sourceTree = "<group>"; };
 		5C365620052AF770151A81B2 /* Pods-Staffy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Staffy.debug.xcconfig"; path = "Target Support Files/Pods-Staffy/Pods-Staffy.debug.xcconfig"; sourceTree = "<group>"; };
-		7402A73822F6403800E2C78B /* AlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
-		7402A73A22F6407D00E2C78B /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		7402B71122F7442F000454D1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		7403CFC722F8A15100C6C8D1 /* ErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorExtension.swift; sourceTree = "<group>"; };
+		7403CFC922F8A16000C6C8D1 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
+		7403CFCB22F8A16D00C6C8D1 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		7411E32522F0BA3200E3830A /* Staffy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Staffy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7411E32822F0BA3200E3830A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7411E32D22F0BA3200E3830A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -41,6 +48,11 @@
 		743BE9E722F0C5A6006A2F6E /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		743BE9E922F0C5C6006A2F6E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		743BE9EB22F0FF10006A2F6E /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		74B23E7F22F8ABE30058B5D4 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		74B23E8322F8AD980058B5D4 /* MyJobsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyJobsViewController.swift; sourceTree = "<group>"; };
+		74B23E8522F8ADA50058B5D4 /* MyJobs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyJobs.storyboard; sourceTree = "<group>"; };
+		74B23E8722F8ADDB0058B5D4 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		74B23E8922F8ADEA0058B5D4 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		74EDBC0122F0BC19007B65B8 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		74EDBC0322F0BD01007B65B8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B52C6C51D2F79BF24B9E3E8D /* Pods_Staffy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Staffy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,18 +81,11 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		7402A73C22F6419E00E2C78B /* Alert */ = {
-			isa = PBXGroup;
-			children = (
-				7402A73822F6403800E2C78B /* AlertView.xib */,
-			);
-			path = Alert;
-			sourceTree = "<group>";
-		};
 		7402B71022F743DC000454D1 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				7402B71122F7442F000454D1 /* HomeViewController.swift */,
+				74B23E7F22F8ABE30058B5D4 /* Home.storyboard */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -125,6 +130,9 @@
 			children = (
 				743BE9E722F0C5A6006A2F6E /* Utilities.swift */,
 				743BE9E922F0C5C6006A2F6E /* Constants.swift */,
+				7403CFC922F8A16000C6C8D1 /* FontExtension.swift */,
+				7403CFCB22F8A16D00C6C8D1 /* ColorExtension.swift */,
+				7403CFC722F8A15100C6C8D1 /* ErrorExtension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -132,9 +140,10 @@
 		7413AE4F22F37D880019CD06 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				7402A73C22F6419E00E2C78B /* Alert */,
 				7402A73722F62CFF00E2C78B /* Login */,
 				7402B71022F743DC000454D1 /* Home */,
+				74B23E8122F8AD4A0058B5D4 /* MyJobs */,
+				74B23E8222F8AD5B0058B5D4 /* Profile */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -149,9 +158,26 @@
 		7413AE5122F37D8F0019CD06 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7402A73A22F6407D00E2C78B /* AlertView.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		74B23E8122F8AD4A0058B5D4 /* MyJobs */ = {
+			isa = PBXGroup;
+			children = (
+				74B23E8322F8AD980058B5D4 /* MyJobsViewController.swift */,
+				74B23E8522F8ADA50058B5D4 /* MyJobs.storyboard */,
+			);
+			path = MyJobs;
+			sourceTree = "<group>";
+		};
+		74B23E8222F8AD5B0058B5D4 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				74B23E8722F8ADDB0058B5D4 /* ProfileViewController.swift */,
+				74B23E8922F8ADEA0058B5D4 /* Profile.storyboard */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		B5FA7F316355B06C586471E4 /* Pods */ = {
@@ -231,10 +257,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74B23E8022F8ABE30058B5D4 /* Home.storyboard in Resources */,
 				7411E33322F0BA3500E3830A /* LaunchScreen.storyboard in Resources */,
 				7411E33B22F0BAE100E3830A /* GoogleService-Info.plist in Resources */,
 				7411E33022F0BA3500E3830A /* Assets.xcassets in Resources */,
-				7402A73922F6403900E2C78B /* AlertView.xib in Resources */,
+				74B23E8622F8ADA50058B5D4 /* MyJobs.storyboard in Resources */,
+				74B23E8A22F8ADEA0058B5D4 /* Profile.storyboard in Resources */,
 				74EDBC0222F0BC19007B65B8 /* Login.storyboard in Resources */,
 				7411E32E22F0BA3200E3830A /* Main.storyboard in Resources */,
 			);
@@ -289,13 +317,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7403CFCA22F8A16000C6C8D1 /* FontExtension.swift in Sources */,
 				743BE9E822F0C5A6006A2F6E /* Utilities.swift in Sources */,
 				743BE9EC22F0FF10006A2F6E /* RegisterViewController.swift in Sources */,
-				7402A73B22F6407D00E2C78B /* AlertView.swift in Sources */,
+				74B23E8422F8AD980058B5D4 /* MyJobsViewController.swift in Sources */,
 				7402B71222F7442F000454D1 /* HomeViewController.swift in Sources */,
+				7403CFC822F8A15100C6C8D1 /* ErrorExtension.swift in Sources */,
 				74EDBC0422F0BD01007B65B8 /* LoginViewController.swift in Sources */,
 				7413AE4D22F375DC0019CD06 /* ResetPasswordViewController.swift in Sources */,
 				7411E32922F0BA3200E3830A /* AppDelegate.swift in Sources */,
+				74B23E8822F8ADDB0058B5D4 /* ProfileViewController.swift in Sources */,
+				7403CFCC22F8A16D00C6C8D1 /* ColorExtension.swift in Sources */,
 				743BE9EA22F0C5C6006A2F6E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

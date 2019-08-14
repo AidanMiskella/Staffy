@@ -8,13 +8,15 @@
 
 
 import Foundation
+import SCLAlertView
 
 struct Constants {
     
     struct Storyboard {
         
-        static let homeViewController = "homeVC"
-        static let loginViewController = "loginVC"
+        static let main = "main"
+        static let homeViewController = "homeRoot"
+        static let loginViewController = "loginRoot"
     }
     
     struct LoginError {
@@ -38,5 +40,18 @@ struct Constants {
         static let user_id = "userID"
         static let first_name = "firstName"
         static let last_name = "lastName"
+    }
+    
+    struct AlertView {
+        
+        static let appearance = SCLAlertView.SCLAppearance(
+            
+            kWindowWidth: 300.0,
+            kWindowHeight: 600.0,
+            kTitleFont: .largeTitle,
+            kTextFont: .subTitle,
+            kButtonFont: .largeLoginButton,
+            showCloseButton: false
+        )
     }
 }
