@@ -35,11 +35,32 @@ struct Constants {
         
         static let user_ref = "users"
         
-        static let email = "email"
-        static let date_created = "dateCreated"
         static let user_id = "userID"
+        static let email = "email"
         static let first_name = "firstName"
         static let last_name = "lastName"
+        static let avatar_url = "avatarURL"
+        static let bio = "bio"
+        static let reviewRating = "rating"
+        static let mobile = "mobile"
+        static let documents = "documents"
+        static let address = "address"
+        static let gender = "gender"
+        static let dob = "dob"
+        static let date_created = "dateCreated"
+        static let jobs_applied = "jobsApplied"
+        static let jobs_accepted = "jobsAccepted"
+    }
+    
+    struct Profile {
+        
+        static let ratingError = "An error has occured getting your rating"
+        static let rating = "of 5 Average Rating"
+        static let no_rating = "No reviews yet"
+        static let bioDescription = """
+                                    This is a few short lines to describe who you are, what you do and what kind of
+                                    job you are looking for. Edit your personal statement by clicking below.
+                                    """
     }
     
     struct AlertView {

@@ -11,5 +11,8 @@ target 'Staffy' do
   pod 'Firebase/Auth'
   pod 'IQKeyboardManagerSwift'
   pod 'SCLAlertView'
+  pod 'StarryStars'
+  pod 'ImagePicker'
+  pod 'Firebase/Storage'
 
 end

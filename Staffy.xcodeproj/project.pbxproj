@@ -26,6 +26,7 @@
 		74B23E8622F8ADA50058B5D4 /* MyJobs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74B23E8522F8ADA50058B5D4 /* MyJobs.storyboard */; };
 		74B23E8822F8ADDB0058B5D4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B23E8722F8ADDB0058B5D4 /* ProfileViewController.swift */; };
 		74B23E8A22F8ADEA0058B5D4 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74B23E8922F8ADEA0058B5D4 /* Profile.storyboard */; };
+		74B3CC012328545F00BF1070 /* CornerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3CC002328545F00BF1070 /* CornerExtension.swift */; };
 		74EDBC0222F0BC19007B65B8 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74EDBC0122F0BC19007B65B8 /* Login.storyboard */; };
 		74EDBC0422F0BD01007B65B8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EDBC0322F0BD01007B65B8 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
@@ -53,6 +54,7 @@
 		74B23E8522F8ADA50058B5D4 /* MyJobs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyJobs.storyboard; sourceTree = "<group>"; };
 		74B23E8722F8ADDB0058B5D4 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		74B23E8922F8ADEA0058B5D4 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		74B3CC002328545F00BF1070 /* CornerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerExtension.swift; sourceTree = "<group>"; };
 		74EDBC0122F0BC19007B65B8 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		74EDBC0322F0BD01007B65B8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B52C6C51D2F79BF24B9E3E8D /* Pods_Staffy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Staffy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +134,7 @@
 				743BE9E922F0C5C6006A2F6E /* Constants.swift */,
 				7403CFC922F8A16000C6C8D1 /* FontExtension.swift */,
 				7403CFCB22F8A16D00C6C8D1 /* ColorExtension.swift */,
+				74B3CC002328545F00BF1070 /* CornerExtension.swift */,
 				7403CFC722F8A15100C6C8D1 /* ErrorExtension.swift */,
 			);
 			path = Helpers;
@@ -323,6 +326,7 @@
 				74B23E8422F8AD980058B5D4 /* MyJobsViewController.swift in Sources */,
 				7402B71222F7442F000454D1 /* HomeViewController.swift in Sources */,
 				7403CFC822F8A15100C6C8D1 /* ErrorExtension.swift in Sources */,
+				74B3CC012328545F00BF1070 /* CornerExtension.swift in Sources */,
 				74EDBC0422F0BD01007B65B8 /* LoginViewController.swift in Sources */,
 				7413AE4D22F375DC0019CD06 /* ResetPasswordViewController.swift in Sources */,
 				7411E32922F0BA3200E3830A /* AppDelegate.swift in Sources */,

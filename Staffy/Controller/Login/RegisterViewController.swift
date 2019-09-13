@@ -95,11 +95,21 @@ class RegisterViewController: UIViewController {
     func saveUser(_ userId: String) {
         
         Firestore.firestore().collection(Constants.FirebaseDB.user_ref).document(userId).setData([
-            Constants.FirebaseDB.email: emailText.text!,
-            Constants.FirebaseDB.date_created: FieldValue.serverTimestamp(),
             Constants.FirebaseDB.user_id: userId,
             Constants.FirebaseDB.first_name: firstNameText.text!,
-            Constants.FirebaseDB.last_name: lastNameText.text!
+            Constants.FirebaseDB.last_name: lastNameText.text!,
+            Constants.FirebaseDB.email: emailText.text!,
+            Constants.FirebaseDB.bio: Constants.Profile.bioDescription,
+            Constants.FirebaseDB.reviewRating: 0.0,
+            Constants.FirebaseDB.avatar_url: "",
+            Constants.FirebaseDB.mobile: "",
+            Constants.FirebaseDB.address: "",
+            Constants.FirebaseDB.gender: "",
+            Constants.FirebaseDB.jobs_applied: [],
+            Constants.FirebaseDB.jobs_accepted: [],
+            Constants.FirebaseDB.documents: [],
+            Constants.FirebaseDB.dob: Date(),
+            Constants.FirebaseDB.date_created: FieldValue.serverTimestamp()
             ], completion: { (error) in
                 if let error = error {
                     
