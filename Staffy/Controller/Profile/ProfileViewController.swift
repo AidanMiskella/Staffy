@@ -34,15 +34,11 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
     
     @IBOutlet weak var jobAlertLabel: UILabel!
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        setUpProfile()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setUpProfile()
         setUpElements()
     }
     
@@ -74,6 +70,7 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
         ref.getDocument { (snapshot, err) in
             if let data = snapshot?.data() {
                 
+                self.downloadAvatar(data)
                 self.firstNameLabel.text = "\(data[Constants.FirebaseDB.first_name]!) \(data[Constants.FirebaseDB.last_name]!)"
                 self.ratingView.rating = data[Constants.FirebaseDB.reviewRating]! as! Float
                 self.ratingLabel.text = self.getRatingText(rating: data[Constants.FirebaseDB.reviewRating]! as! Float)
@@ -83,6 +80,25 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
                 print("Couldn't find the document")
             }
         }
+    }
+    
+    func downloadAvatar(_ data: [String: Any]) {
+        
+        let url = URL(string: data[Constants.FirebaseDB.avatar_url] as! String)
+        let session = URLSession.shared
+        session.dataTask(with: url!) { (data: Data?, response: URLResponse?, error: Error?) in
+            
+            if let error = error {
+                
+                print(error)
+            } else {
+                
+                DispatchQueue.main.async {
+                    
+                    self.profileImage.image = UIImage(data: data!)
+                }
+            }
+        }.resume()
     }
     
     func getRatingText(rating: Float) -> String {
@@ -110,7 +126,7 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
         
         let imagePickerController = ImagePickerController()
         imagePickerController.delegate = self
-        imagePickerController.imageLimit = 5
+        imagePickerController.imageLimit = 1
         present(imagePickerController, animated: true, completion: nil)
     }
     
@@ -121,12 +137,38 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
     
     func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
         
+        // Get the users avatarURL
+        let ref = Firestore.firestore().collection(Constants.FirebaseDB.user_ref)
+            .document(Auth.auth().currentUser!.uid)
+        let storageRef = Storage.storage().reference().child("avatars").child(Auth.auth().currentUser!.uid)
         
+        if let uploadData = images[0].pngData() {
+            
+            storageRef.putData(uploadData, metadata: nil) { (metaData, error) in
+                
+                if let error = error {
+                    
+                    debugPrint("Error storing image: \(error.localizedDescription)")
+                } else {
+                    
+                    storageRef.downloadURL { (url, error) in
+                        
+                        guard let avatarURL = url else { return }
+                        ref.updateData(["avatarURL": avatarURL.absoluteString], completion: { (error) in
+                            
+                            self.profileImage.image = images[0]
+                            imagePicker.dismiss(animated: true)
+                        })
+                    }
+                }
+            }
+        }
+
     }
     
     func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
         
-        
+        imagePicker.dismiss(animated: true)
     }
     
     @IBAction func logoutTapped(_ sender: UIBarButtonItem) {

@@ -37,6 +37,8 @@ class RegisterViewController: UIViewController {
     
     @IBOutlet weak var passwordImage: UIImageView!
     
+    var avatarURLString: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -85,14 +87,14 @@ class RegisterViewController: UIViewController {
                 } else {
                     
                     guard let userId = user?.user.uid else { return }
-                    self.saveUser(userId)
+                    self.storeAvatar(userId)
                     self.sendVerificationEmail()
                 }
             }
         }
     }
     
-    func saveUser(_ userId: String) {
+    func saveUser(_ userId: String, _ avatarURL: String) {
         
         Firestore.firestore().collection(Constants.FirebaseDB.user_ref).document(userId).setData([
             Constants.FirebaseDB.user_id: userId,
@@ -101,7 +103,7 @@ class RegisterViewController: UIViewController {
             Constants.FirebaseDB.email: emailText.text!,
             Constants.FirebaseDB.bio: Constants.Profile.bioDescription,
             Constants.FirebaseDB.reviewRating: 0.0,
-            Constants.FirebaseDB.avatar_url: "",
+            Constants.FirebaseDB.avatar_url: avatarURL,
             Constants.FirebaseDB.mobile: "",
             Constants.FirebaseDB.address: "",
             Constants.FirebaseDB.gender: "",
@@ -116,6 +118,29 @@ class RegisterViewController: UIViewController {
                     debugPrint("Error saving user: \(error.localizedDescription)")
                 }
         })
+    }
+    
+    func storeAvatar(_ userId: String) {
+        
+        let storageRef = Storage.storage().reference().child("avatars").child(userId)
+        
+        if let uploadData = UIImage(named: "image-placeholder")?.pngData() {
+            
+            storageRef.putData(uploadData, metadata: nil) { (metaData, error) in
+                
+                if let error = error {
+                    
+                    debugPrint("Error storing image: \(error.localizedDescription)")
+                } else {
+                    
+                    storageRef.downloadURL { (url, error) in
+                        
+                        guard let avatarURL = url else { return }
+                        self.saveUser(userId, avatarURL.absoluteString)
+                    }
+                }
+            }
+        }
     }
     
     func sendVerificationEmail() {
