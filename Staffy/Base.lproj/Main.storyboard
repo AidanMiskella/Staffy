@@ -51,7 +51,7 @@
         <!--Profile-->
         <scene sceneID="qCe-G7-sk1">
             <objects>
-                <viewControllerPlaceholder storyboardName="Profile" id="Stb-Xj-Sg6" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardIdentifier="ProfileRoot" storyboardName="Profile" id="Stb-Xj-Sg6" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" id="gjM-dQ-N4P"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eWy-Yf-vOK" userLabel="First Responder" sceneMemberID="firstResponder"/>

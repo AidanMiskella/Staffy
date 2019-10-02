@@ -8,10 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		212FB1B1EAD2BABC870381D5 /* Pods_Staffy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52C6C51D2F79BF24B9E3E8D /* Pods_Staffy.framework */; };
+		7400A2092334306E00D4E9FE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7400A2082334306E00D4E9FE /* User.swift */; };
+		7400A20B2334336D00D4E9FE /* UserServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7400A20A2334336D00D4E9FE /* UserServices.swift */; };
+		7401164423413FE900667AE1 /* Documents.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7401164323413FE900667AE1 /* Documents.storyboard */; };
+		74011648234141E000667AE1 /* DocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74011647234141E000667AE1 /* DocumentsViewController.swift */; };
 		7402B71222F7442F000454D1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7402B71122F7442F000454D1 /* HomeViewController.swift */; };
+		7402D1182337AD2E001E0573 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7402D1172337AD2E001E0573 /* UIViewExtension.swift */; };
+		7403019D233CB3390040FAF5 /* NameEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7403019C233CB3390040FAF5 /* NameEditViewController.swift */; };
+		7403019F233CB3530040FAF5 /* EmailEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7403019E233CB3530040FAF5 /* EmailEditViewController.swift */; };
+		740301A1233CB3680040FAF5 /* DateOfBirthEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740301A0233CB3680040FAF5 /* DateOfBirthEditViewController.swift */; };
+		740301A3233CB37E0040FAF5 /* GenderEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740301A2233CB37E0040FAF5 /* GenderEditViewController.swift */; };
+		740301A5233CB39E0040FAF5 /* MobileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740301A4233CB39E0040FAF5 /* MobileEditViewController.swift */; };
+		740301A7233CB3B00040FAF5 /* AddressEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740301A6233CB3B00040FAF5 /* AddressEditViewController.swift */; };
 		7403CFC822F8A15100C6C8D1 /* ErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7403CFC722F8A15100C6C8D1 /* ErrorExtension.swift */; };
 		7403CFCA22F8A16000C6C8D1 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7403CFC922F8A16000C6C8D1 /* FontExtension.swift */; };
 		7403CFCC22F8A16D00C6C8D1 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7403CFCB22F8A16D00C6C8D1 /* ColorExtension.swift */; };
+		7405A4FB233C2C360046BC71 /* NameEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7405A4FA233C2C360046BC71 /* NameEdit.storyboard */; };
+		7405A4FD233C2C950046BC71 /* EmailEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7405A4FC233C2C950046BC71 /* EmailEdit.storyboard */; };
+		7405A4FF233C2CAB0046BC71 /* DateOfBirthEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7405A4FE233C2CAB0046BC71 /* DateOfBirthEdit.storyboard */; };
+		7405A501233C2CB90046BC71 /* GenderEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7405A500233C2CB90046BC71 /* GenderEdit.storyboard */; };
+		7405A503233C2CC90046BC71 /* MobileEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7405A502233C2CC90046BC71 /* MobileEdit.storyboard */; };
+		7405A505233C2CD50046BC71 /* AddressEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7405A504233C2CD50046BC71 /* AddressEdit.storyboard */; };
+		740C16CA2336343F00266C62 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740C16C92336343F00266C62 /* ImageService.swift */; };
 		7411E32922F0BA3200E3830A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7411E32822F0BA3200E3830A /* AppDelegate.swift */; };
 		7411E32E22F0BA3200E3830A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7411E32C22F0BA3200E3830A /* Main.storyboard */; };
 		7411E33022F0BA3500E3830A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7411E32F22F0BA3500E3830A /* Assets.xcassets */; };
@@ -21,23 +39,44 @@
 		743BE9E822F0C5A6006A2F6E /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE9E722F0C5A6006A2F6E /* Utilities.swift */; };
 		743BE9EA22F0C5C6006A2F6E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE9E922F0C5C6006A2F6E /* Constants.swift */; };
 		743BE9EC22F0FF10006A2F6E /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BE9EB22F0FF10006A2F6E /* RegisterViewController.swift */; };
+		7453F2062331339D0019EECE /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7453F2052331339D0019EECE /* ProfileTableViewCell.swift */; };
+		7453F20A233135270019EECE /* ProfileCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7453F209233135270019EECE /* ProfileCellData.swift */; };
 		74B23E8022F8ABE30058B5D4 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74B23E7F22F8ABE30058B5D4 /* Home.storyboard */; };
 		74B23E8422F8AD980058B5D4 /* MyJobsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B23E8322F8AD980058B5D4 /* MyJobsViewController.swift */; };
 		74B23E8622F8ADA50058B5D4 /* MyJobs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74B23E8522F8ADA50058B5D4 /* MyJobs.storyboard */; };
 		74B23E8822F8ADDB0058B5D4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B23E8722F8ADDB0058B5D4 /* ProfileViewController.swift */; };
 		74B23E8A22F8ADEA0058B5D4 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74B23E8922F8ADEA0058B5D4 /* Profile.storyboard */; };
-		74B3CC012328545F00BF1070 /* CornerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3CC002328545F00BF1070 /* CornerExtension.swift */; };
 		74EDBC0222F0BC19007B65B8 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74EDBC0122F0BC19007B65B8 /* Login.storyboard */; };
 		74EDBC0422F0BD01007B65B8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EDBC0322F0BD01007B65B8 /* LoginViewController.swift */; };
+		74FC54BD2343C15400938320 /* BioEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74FC54BC2343C15400938320 /* BioEdit.storyboard */; };
+		74FC54BF2343C16300938320 /* BioEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FC54BE2343C16300938320 /* BioEditViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2F15A6D682DD4735EC998F1B /* Pods-Staffy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Staffy.release.xcconfig"; path = "Target Support Files/Pods-Staffy/Pods-Staffy.release.xcconfig"; sourceTree = "<group>"; };
 		5C365620052AF770151A81B2 /* Pods-Staffy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Staffy.debug.xcconfig"; path = "Target Support Files/Pods-Staffy/Pods-Staffy.debug.xcconfig"; sourceTree = "<group>"; };
+		7400A2082334306E00D4E9FE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7400A20A2334336D00D4E9FE /* UserServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServices.swift; sourceTree = "<group>"; };
+		7401164323413FE900667AE1 /* Documents.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Documents.storyboard; sourceTree = "<group>"; };
+		74011647234141E000667AE1 /* DocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsViewController.swift; sourceTree = "<group>"; };
 		7402B71122F7442F000454D1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		7402D1172337AD2E001E0573 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		7403019C233CB3390040FAF5 /* NameEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameEditViewController.swift; sourceTree = "<group>"; };
+		7403019E233CB3530040FAF5 /* EmailEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailEditViewController.swift; sourceTree = "<group>"; };
+		740301A0233CB3680040FAF5 /* DateOfBirthEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOfBirthEditViewController.swift; sourceTree = "<group>"; };
+		740301A2233CB37E0040FAF5 /* GenderEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderEditViewController.swift; sourceTree = "<group>"; };
+		740301A4233CB39E0040FAF5 /* MobileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileEditViewController.swift; sourceTree = "<group>"; };
+		740301A6233CB3B00040FAF5 /* AddressEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressEditViewController.swift; sourceTree = "<group>"; };
 		7403CFC722F8A15100C6C8D1 /* ErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorExtension.swift; sourceTree = "<group>"; };
 		7403CFC922F8A16000C6C8D1 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		7403CFCB22F8A16D00C6C8D1 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		7405A4FA233C2C360046BC71 /* NameEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NameEdit.storyboard; sourceTree = "<group>"; };
+		7405A4FC233C2C950046BC71 /* EmailEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EmailEdit.storyboard; sourceTree = "<group>"; };
+		7405A4FE233C2CAB0046BC71 /* DateOfBirthEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DateOfBirthEdit.storyboard; sourceTree = "<group>"; };
+		7405A500233C2CB90046BC71 /* GenderEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GenderEdit.storyboard; sourceTree = "<group>"; };
+		7405A502233C2CC90046BC71 /* MobileEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MobileEdit.storyboard; sourceTree = "<group>"; };
+		7405A504233C2CD50046BC71 /* AddressEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddressEdit.storyboard; sourceTree = "<group>"; };
+		740C16C92336343F00266C62 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		7411E32522F0BA3200E3830A /* Staffy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Staffy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7411E32822F0BA3200E3830A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7411E32D22F0BA3200E3830A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -49,14 +88,17 @@
 		743BE9E722F0C5A6006A2F6E /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		743BE9E922F0C5C6006A2F6E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		743BE9EB22F0FF10006A2F6E /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		7453F2052331339D0019EECE /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		7453F209233135270019EECE /* ProfileCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCellData.swift; sourceTree = "<group>"; };
 		74B23E7F22F8ABE30058B5D4 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		74B23E8322F8AD980058B5D4 /* MyJobsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyJobsViewController.swift; sourceTree = "<group>"; };
 		74B23E8522F8ADA50058B5D4 /* MyJobs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyJobs.storyboard; sourceTree = "<group>"; };
 		74B23E8722F8ADDB0058B5D4 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		74B23E8922F8ADEA0058B5D4 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
-		74B3CC002328545F00BF1070 /* CornerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerExtension.swift; sourceTree = "<group>"; };
 		74EDBC0122F0BC19007B65B8 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		74EDBC0322F0BD01007B65B8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		74FC54BC2343C15400938320 /* BioEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BioEdit.storyboard; sourceTree = "<group>"; };
+		74FC54BE2343C16300938320 /* BioEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioEditViewController.swift; sourceTree = "<group>"; };
 		B52C6C51D2F79BF24B9E3E8D /* Pods_Staffy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Staffy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -72,6 +114,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7401163E23413F4D00667AE1 /* Documents */ = {
+			isa = PBXGroup;
+			children = (
+				74011647234141E000667AE1 /* DocumentsViewController.swift */,
+				7401164323413FE900667AE1 /* Documents.storyboard */,
+			);
+			path = Documents;
+			sourceTree = "<group>";
+		};
 		7402A73722F62CFF00E2C78B /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +141,30 @@
 				74B23E7F22F8ABE30058B5D4 /* Home.storyboard */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		7405A4F9233C2AEA0046BC71 /* Profile Edits */ = {
+			isa = PBXGroup;
+			children = (
+				74BEC61F233F6AFC00019738 /* Name */,
+				74BEC620233F6B0400019738 /* Email */,
+				74FC54BB2343C12E00938320 /* Bio */,
+				74BEC621233F6B0A00019738 /* Date Of Birth */,
+				74BEC622233F6B1900019738 /* Gender */,
+				74BEC623233F6B2000019738 /* Mobile */,
+				74BEC624233F6B2800019738 /* Address */,
+				7401163E23413F4D00667AE1 /* Documents */,
+			);
+			path = "Profile Edits";
+			sourceTree = "<group>";
+		};
+		740C16C82336332B00266C62 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7400A20A2334336D00D4E9FE /* UserServices.swift */,
+				740C16C92336343F00266C62 /* ImageService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		7411E31C22F0BA3200E3830A = {
@@ -114,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				7413AE4E22F37D740019CD06 /* Helpers */,
+				740C16C82336332B00266C62 /* Services */,
 				7413AE5122F37D8F0019CD06 /* Model */,
 				7413AE5022F37D8B0019CD06 /* View */,
 				7413AE4F22F37D880019CD06 /* Controller */,
@@ -134,8 +210,8 @@
 				743BE9E922F0C5C6006A2F6E /* Constants.swift */,
 				7403CFC922F8A16000C6C8D1 /* FontExtension.swift */,
 				7403CFCB22F8A16D00C6C8D1 /* ColorExtension.swift */,
-				74B3CC002328545F00BF1070 /* CornerExtension.swift */,
 				7403CFC722F8A15100C6C8D1 /* ErrorExtension.swift */,
+				7402D1172337AD2E001E0573 /* UIViewExtension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -154,6 +230,8 @@
 		7413AE5022F37D8B0019CD06 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7453F209233135270019EECE /* ProfileCellData.swift */,
+				7453F2052331339D0019EECE /* ProfileTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -161,6 +239,7 @@
 		7413AE5122F37D8F0019CD06 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7400A2082334306E00D4E9FE /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -179,8 +258,72 @@
 			children = (
 				74B23E8722F8ADDB0058B5D4 /* ProfileViewController.swift */,
 				74B23E8922F8ADEA0058B5D4 /* Profile.storyboard */,
+				7405A4F9233C2AEA0046BC71 /* Profile Edits */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		74BEC61F233F6AFC00019738 /* Name */ = {
+			isa = PBXGroup;
+			children = (
+				7403019C233CB3390040FAF5 /* NameEditViewController.swift */,
+				7405A4FA233C2C360046BC71 /* NameEdit.storyboard */,
+			);
+			path = Name;
+			sourceTree = "<group>";
+		};
+		74BEC620233F6B0400019738 /* Email */ = {
+			isa = PBXGroup;
+			children = (
+				7403019E233CB3530040FAF5 /* EmailEditViewController.swift */,
+				7405A4FC233C2C950046BC71 /* EmailEdit.storyboard */,
+			);
+			path = Email;
+			sourceTree = "<group>";
+		};
+		74BEC621233F6B0A00019738 /* Date Of Birth */ = {
+			isa = PBXGroup;
+			children = (
+				740301A0233CB3680040FAF5 /* DateOfBirthEditViewController.swift */,
+				7405A4FE233C2CAB0046BC71 /* DateOfBirthEdit.storyboard */,
+			);
+			path = "Date Of Birth";
+			sourceTree = "<group>";
+		};
+		74BEC622233F6B1900019738 /* Gender */ = {
+			isa = PBXGroup;
+			children = (
+				740301A2233CB37E0040FAF5 /* GenderEditViewController.swift */,
+				7405A500233C2CB90046BC71 /* GenderEdit.storyboard */,
+			);
+			path = Gender;
+			sourceTree = "<group>";
+		};
+		74BEC623233F6B2000019738 /* Mobile */ = {
+			isa = PBXGroup;
+			children = (
+				740301A4233CB39E0040FAF5 /* MobileEditViewController.swift */,
+				7405A502233C2CC90046BC71 /* MobileEdit.storyboard */,
+			);
+			path = Mobile;
+			sourceTree = "<group>";
+		};
+		74BEC624233F6B2800019738 /* Address */ = {
+			isa = PBXGroup;
+			children = (
+				740301A6233CB3B00040FAF5 /* AddressEditViewController.swift */,
+				7405A504233C2CD50046BC71 /* AddressEdit.storyboard */,
+			);
+			path = Address;
+			sourceTree = "<group>";
+		};
+		74FC54BB2343C12E00938320 /* Bio */ = {
+			isa = PBXGroup;
+			children = (
+				74FC54BE2343C16300938320 /* BioEditViewController.swift */,
+				74FC54BC2343C15400938320 /* BioEdit.storyboard */,
+			);
+			path = Bio;
 			sourceTree = "<group>";
 		};
 		B5FA7F316355B06C586471E4 /* Pods */ = {
@@ -234,6 +377,17 @@
 				TargetAttributes = {
 					7411E32422F0BA3200E3830A = {
 						CreatedOnToolsVersion = 10.3;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 0;
+							};
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -261,13 +415,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				74B23E8022F8ABE30058B5D4 /* Home.storyboard in Resources */,
+				7405A505233C2CD50046BC71 /* AddressEdit.storyboard in Resources */,
 				7411E33322F0BA3500E3830A /* LaunchScreen.storyboard in Resources */,
+				7405A4FB233C2C360046BC71 /* NameEdit.storyboard in Resources */,
+				7405A4FF233C2CAB0046BC71 /* DateOfBirthEdit.storyboard in Resources */,
 				7411E33B22F0BAE100E3830A /* GoogleService-Info.plist in Resources */,
 				7411E33022F0BA3500E3830A /* Assets.xcassets in Resources */,
 				74B23E8622F8ADA50058B5D4 /* MyJobs.storyboard in Resources */,
+				7405A501233C2CB90046BC71 /* GenderEdit.storyboard in Resources */,
 				74B23E8A22F8ADEA0058B5D4 /* Profile.storyboard in Resources */,
+				7405A503233C2CC90046BC71 /* MobileEdit.storyboard in Resources */,
 				74EDBC0222F0BC19007B65B8 /* Login.storyboard in Resources */,
 				7411E32E22F0BA3200E3830A /* Main.storyboard in Resources */,
+				7401164423413FE900667AE1 /* Documents.storyboard in Resources */,
+				7405A4FD233C2C950046BC71 /* EmailEdit.storyboard in Resources */,
+				74FC54BD2343C15400938320 /* BioEdit.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,18 +483,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				7403CFCA22F8A16000C6C8D1 /* FontExtension.swift in Sources */,
+				7403019F233CB3530040FAF5 /* EmailEditViewController.swift in Sources */,
+				7453F2062331339D0019EECE /* ProfileTableViewCell.swift in Sources */,
 				743BE9E822F0C5A6006A2F6E /* Utilities.swift in Sources */,
 				743BE9EC22F0FF10006A2F6E /* RegisterViewController.swift in Sources */,
+				7400A2092334306E00D4E9FE /* User.swift in Sources */,
 				74B23E8422F8AD980058B5D4 /* MyJobsViewController.swift in Sources */,
 				7402B71222F7442F000454D1 /* HomeViewController.swift in Sources */,
 				7403CFC822F8A15100C6C8D1 /* ErrorExtension.swift in Sources */,
-				74B3CC012328545F00BF1070 /* CornerExtension.swift in Sources */,
+				7402D1182337AD2E001E0573 /* UIViewExtension.swift in Sources */,
+				74011648234141E000667AE1 /* DocumentsViewController.swift in Sources */,
+				7453F20A233135270019EECE /* ProfileCellData.swift in Sources */,
 				74EDBC0422F0BD01007B65B8 /* LoginViewController.swift in Sources */,
+				740C16CA2336343F00266C62 /* ImageService.swift in Sources */,
 				7413AE4D22F375DC0019CD06 /* ResetPasswordViewController.swift in Sources */,
+				740301A5233CB39E0040FAF5 /* MobileEditViewController.swift in Sources */,
 				7411E32922F0BA3200E3830A /* AppDelegate.swift in Sources */,
+				740301A3233CB37E0040FAF5 /* GenderEditViewController.swift in Sources */,
 				74B23E8822F8ADDB0058B5D4 /* ProfileViewController.swift in Sources */,
+				7400A20B2334336D00D4E9FE /* UserServices.swift in Sources */,
+				7403019D233CB3390040FAF5 /* NameEditViewController.swift in Sources */,
 				7403CFCC22F8A16D00C6C8D1 /* ColorExtension.swift in Sources */,
+				740301A7233CB3B00040FAF5 /* AddressEditViewController.swift in Sources */,
+				74FC54BF2343C16300938320 /* BioEditViewController.swift in Sources */,
 				743BE9EA22F0C5C6006A2F6E /* Constants.swift in Sources */,
+				740301A1233CB3680040FAF5 /* DateOfBirthEditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

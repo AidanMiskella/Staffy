@@ -49,10 +49,10 @@ class RegisterViewController: UIViewController {
         
         errorLabel.alpha = 0
         
-        Utilities.styleTextField(textfield: firstNameText, font: .textField, fontColor: .black)
-        Utilities.styleTextField(textfield: lastNameText, font: .textField, fontColor: .black)
-        Utilities.styleTextField(textfield: emailText, font: .textField, fontColor: .black)
-        Utilities.styleTextField(textfield: passwordText, font: .textField, fontColor: .black)
+        Utilities.styleTextField(textfield: firstNameText, font: .textField, fontColor: .black, padding: 40.0)
+        Utilities.styleTextField(textfield: lastNameText, font: .textField, fontColor: .black, padding: 40.0)
+        Utilities.styleTextField(textfield: emailText, font: .textField, fontColor: .black, padding: 40.0)
+        Utilities.styleTextField(textfield: passwordText, font: .textField, fontColor: .black, padding: 40.0)
         Utilities.styleFilledButton(button: submitButton, font: .largeLoginButton, fontColor: .white, backgroundColor: .lightBlue, cornerRadius: 20.0)
         Utilities.styleLabel(label: errorLabel, font: .loginError, fontColor: .red)
         Utilities.styleLabel(label: titleLabel, font: .loginTitle, fontColor: .lightGray)
@@ -104,14 +104,14 @@ class RegisterViewController: UIViewController {
             Constants.FirebaseDB.bio: Constants.Profile.bioDescription,
             Constants.FirebaseDB.reviewRating: 0.0,
             Constants.FirebaseDB.avatar_url: avatarURL,
-            Constants.FirebaseDB.mobile: "",
-            Constants.FirebaseDB.address: "",
-            Constants.FirebaseDB.gender: "",
+            Constants.FirebaseDB.mobile: Constants.Profile.notSet,
+            Constants.FirebaseDB.address: Constants.Profile.notSet,
+            Constants.FirebaseDB.gender: Constants.Profile.notSet,
             Constants.FirebaseDB.jobs_applied: [],
             Constants.FirebaseDB.jobs_accepted: [],
             Constants.FirebaseDB.documents: [],
-            Constants.FirebaseDB.dob: Date(),
-            Constants.FirebaseDB.date_created: FieldValue.serverTimestamp()
+            Constants.FirebaseDB.dob: Constants.Profile.notSet,
+            Constants.FirebaseDB.date_created: Utilities.dateFormatter(Date())
             ], completion: { (error) in
                 if let error = error {
                     

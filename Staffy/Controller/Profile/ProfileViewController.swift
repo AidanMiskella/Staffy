@@ -28,23 +28,48 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
     
     @IBOutlet weak var bioLabel: UILabel!
     
-    @IBOutlet weak var editProfileButton: UIButton!
-    
     @IBOutlet weak var jobAlertView: UIView!
     
+    @IBOutlet weak var jobAlertImage: UIImageView!
+    
     @IBOutlet weak var jobAlertLabel: UILabel!
+    
+    @IBOutlet weak var logoutButton: UIBarButtonItem!
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    var dataCells: [ProfileCellData] = []
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        setUpProfile()
+        dataCells = createArray()
+        tableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setUpProfile()
         setUpElements()
+        topProfileImageView.layerGradient()
+        dataCells = createArray()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     func setUpElements() {
-     
-        Utilities.styleFilledButton(button: editProfileButton, font: .largeLoginButton, fontColor: .white, backgroundColor: .lightBlue, cornerRadius: 10.0)
+
+        Utilities.styleLabel(label: firstNameLabel, font: .boldLargeTitle, fontColor: .white)
+        Utilities.styleLabel(label: ratingLabel, font: .subTitle, fontColor: .gray)
+        Utilities.styleLabel(label: bioLabel, font: .subTitle, fontColor: .darkGray)
+        Utilities.styleLabel(label: jobAlertLabel, font: .subTitle, fontColor: .white)
+        
+        bioLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(bioTapped)))
+        
+        jobAlertView.backgroundColor = .lightBlue
+        jobAlertImage.tintColor = .white
         
         middleRatingView.roundCorners([.topLeft, .topRight], radius: 30)
         
@@ -64,41 +89,18 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
     
     func setUpProfile() {
         
-        let ref = Firestore.firestore().collection(Constants.FirebaseDB.user_ref)
-            .document(Auth.auth().currentUser!.uid)
-
-        ref.getDocument { (snapshot, err) in
-            if let data = snapshot?.data() {
-                
-                self.downloadAvatar(data)
-                self.firstNameLabel.text = "\(data[Constants.FirebaseDB.first_name]!) \(data[Constants.FirebaseDB.last_name]!)"
-                self.ratingView.rating = data[Constants.FirebaseDB.reviewRating]! as! Float
-                self.ratingLabel.text = self.getRatingText(rating: data[Constants.FirebaseDB.reviewRating]! as! Float)
-                self.bioLabel.text = "\(data[Constants.FirebaseDB.bio]!)"
-            } else {
-                
-                print("Couldn't find the document")
-            }
-        }
-    }
-    
-    func downloadAvatar(_ data: [String: Any]) {
+        guard let currentUser = UserService.currentUser else { return }
         
-        let url = URL(string: data[Constants.FirebaseDB.avatar_url] as! String)
-        let session = URLSession.shared
-        session.dataTask(with: url!) { (data: Data?, response: URLResponse?, error: Error?) in
+        ImageService.getImage(withURL: currentUser.avatarURL!) { (image) in
             
-            if let error = error {
-                
-                print(error)
-            } else {
-                
-                DispatchQueue.main.async {
-                    
-                    self.profileImage.image = UIImage(data: data!)
-                }
-            }
-        }.resume()
+            self.profileImage.image = image
+        }
+        
+        firstNameLabel.text = "\(currentUser.firstName) \(currentUser.lastName)"
+        ratingView.rating = currentUser.reviewRating!
+        ratingLabel.text = getRatingText(rating: currentUser.reviewRating!)
+        bioLabel.text = currentUser.bio
+        
     }
     
     func getRatingText(rating: Float) -> String {
@@ -130,9 +132,14 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
         present(imagePickerController, animated: true, completion: nil)
     }
     
+    @objc private func bioTapped(_ recognizer: UITapGestureRecognizer) {
+        
+        self.performSegue(withIdentifier: "Bio", sender: self)
+    }
+    
     func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
         
-        
+        imagePicker.dismiss(animated: true)
     }
     
     func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
@@ -171,6 +178,43 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
         imagePicker.dismiss(animated: true)
     }
     
+    func setGradientBackground() {
+        
+        let colorTop =  UIColor(red: 149/255, green: 209/255, blue: 237/255, alpha: 1).cgColor
+        let colorBottom = UIColor(red: 45/255, green: 171/255, blue: 235/255, alpha: 1).cgColor
+
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = topProfileImageView.bounds
+        
+        self.view.layer.insertSublayer(gradientLayer, at:0)
+    }
+    
+    func createArray() -> [ProfileCellData] {
+        
+        var tempCells: [ProfileCellData] = []
+        guard let currentUser = UserService.currentUser else { return tempCells }
+        
+        let nameCell = ProfileCellData(title: "Name", data: "\(currentUser.firstName) \(currentUser.lastName)")
+        let emailCell = ProfileCellData(title: "Email", data: currentUser.email!)
+        let dateOfBirthCell = ProfileCellData(title: "Date of Birth", data: currentUser.dateOfBirth!)
+        let genderCell = ProfileCellData(title: "Gender", data: currentUser.gender!)
+        let mobileCell = ProfileCellData(title: "Mobile", data: currentUser.mobile!)
+        let addressCell = ProfileCellData(title: "Address", data: currentUser.address!)
+        let documentsCell = ProfileCellData(title: "Documents", data: "\(currentUser.documents!.count) Documents")
+        
+        tempCells.append(nameCell)
+        tempCells.append(emailCell)
+        tempCells.append(dateOfBirthCell)
+        tempCells.append(genderCell)
+        tempCells.append(mobileCell)
+        tempCells.append(addressCell)
+        tempCells.append(documentsCell)
+        
+        return tempCells
+    }
+    
     @IBAction func logoutTapped(_ sender: UIBarButtonItem) {
         
         do {
@@ -182,3 +226,28 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
         }
     }
 }
+
+extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return dataCells.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let profileData = dataCells[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell") as! ProfileTableViewCell
+        
+        cell.setCell(profileData: profileData)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        self.performSegue(withIdentifier: dataCells[indexPath.row].title, sender: self)
+    }
+
+}
+

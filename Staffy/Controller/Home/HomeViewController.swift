@@ -22,7 +22,16 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
 
         loginHandle = Auth.auth().addStateDidChangeListener({ (auth, user) in
-            if user == nil || user?.isEmailVerified == false {
+            
+            if user != nil {
+                
+                UserService.observeUserProfile(user!.uid, completion: { (user) in
+                    
+                    UserService.currentUser = user
+                })
+            } else {
+            
+                UserService.currentUser = nil
                 
                 let storyboard = UIStoryboard(name: "Login", bundle: nil)
                 let loginVC = storyboard.instantiateViewController(withIdentifier: Constants.Storyboard.loginViewController)
