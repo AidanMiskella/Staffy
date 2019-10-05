@@ -46,18 +46,14 @@ class Utilities {
         textfield.font = font
         textfield.textColor = fontColor
         
-        // Create the bottom line
-        let bottomLine = CALayer()
-        
-        bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 1, width: textfield.frame.width, height: 1)
-        
-        bottomLine.backgroundColor = UIColor.lightGray.cgColor
-        
-        // Remove border on text field
         textfield.borderStyle = .none
+        textfield.layer.backgroundColor = UIColor.white.cgColor
         
-        // Add the line to the text field
-        textfield.layer.addSublayer(bottomLine)
+        textfield.layer.masksToBounds = false
+        textfield.layer.shadowColor = UIColor.lightGray.cgColor
+        textfield.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+        textfield.layer.shadowOpacity = 1.0
+        textfield.layer.shadowRadius = 0.0
         
         let paddingView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: padding, height: textfield.frame.height))
         textfield.leftView = paddingView

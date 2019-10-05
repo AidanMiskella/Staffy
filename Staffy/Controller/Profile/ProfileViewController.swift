@@ -20,6 +20,8 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
     
     @IBOutlet weak var firstNameLabel: UILabel!
     
+    @IBOutlet weak var contentView: UIView!
+    
     @IBOutlet weak var middleRatingView: UIView!
     
     @IBOutlet weak var ratingView: RatingView!
@@ -66,12 +68,12 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
         Utilities.styleLabel(label: bioLabel, font: .subTitle, fontColor: .darkGray)
         Utilities.styleLabel(label: jobAlertLabel, font: .subTitle, fontColor: .white)
         
+        contentView.roundCorners([.topLeft, .topRight], radius: 30.0)
+        
         bioLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(bioTapped)))
         
         jobAlertView.backgroundColor = .lightBlue
         jobAlertImage.tintColor = .white
-        
-        middleRatingView.roundCorners([.topLeft, .topRight], radius: 30)
         
         profileImage.layer.borderWidth = 4
         profileImage.layer.masksToBounds = false
