@@ -18,41 +18,72 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ajs-DL-PMy">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ajs-DL-PMy">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KN3-T1-x9T">
-                                        <rect key="frame" x="44" y="101" width="202" height="41"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KN3-T1-x9T">
+                                        <rect key="frame" x="40" y="102" width="200" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="46P-J8-S5F"/>
+                                            <constraint firstAttribute="width" constant="200" id="uSM-YU-lL6"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="KN3-T1-x9T" firstAttribute="leading" secondItem="ajs-DL-PMy" secondAttribute="leading" constant="40" id="2d4-pC-iIn"/>
+                                    <constraint firstAttribute="height" constant="150" id="BBj-Th-nrL"/>
+                                    <constraint firstAttribute="bottom" secondItem="KN3-T1-x9T" secondAttribute="bottom" constant="8" id="srY-DD-uRM"/>
+                                </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VkO-tQ-PWx">
-                                <rect key="frame" x="44" y="158" width="326" height="129"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VkO-tQ-PWx" customClass="GrowingTextView" customModule="GrowingTextView">
+                                <rect key="frame" x="40" y="190" width="334" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oV4-9e-Rin">
-                                <rect key="frame" x="100" y="316" width="215" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oV4-9e-Rin">
+                                <rect key="frame" x="80" y="261" width="254" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="vHL-Na-Lt6"/>
+                                </constraints>
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="saveButtonDidPress:" destination="ANH-pF-y7M" eventType="touchUpInside" id="9di-gk-qtc"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6QX-Ry-7Cr">
+                                <rect key="frame" x="40" y="231" width="334" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="FoJ-TG-eSH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ajs-DL-PMy" firstAttribute="leading" secondItem="d2O-2g-OhM" secondAttribute="leading" id="BJl-fm-2ME"/>
+                            <constraint firstItem="VkO-tQ-PWx" firstAttribute="leading" secondItem="FIg-Lq-mFI" secondAttribute="leading" constant="40" id="Gal-jD-en1"/>
+                            <constraint firstAttribute="trailing" secondItem="6QX-Ry-7Cr" secondAttribute="trailing" constant="40" id="Rko-iQ-JyF"/>
+                            <constraint firstItem="6QX-Ry-7Cr" firstAttribute="leading" secondItem="d2O-2g-OhM" secondAttribute="leading" constant="40" id="UW8-VX-tOf"/>
+                            <constraint firstItem="oV4-9e-Rin" firstAttribute="centerX" secondItem="d2O-2g-OhM" secondAttribute="centerX" id="Uzk-lj-cmD"/>
+                            <constraint firstItem="VkO-tQ-PWx" firstAttribute="top" secondItem="ajs-DL-PMy" secondAttribute="bottom" constant="40" id="bru-SR-Vmj"/>
+                            <constraint firstItem="ajs-DL-PMy" firstAttribute="top" secondItem="d2O-2g-OhM" secondAttribute="top" id="dBE-WQ-p1w"/>
+                            <constraint firstItem="FIg-Lq-mFI" firstAttribute="trailing" secondItem="VkO-tQ-PWx" secondAttribute="trailing" constant="40" id="dYf-fu-7qD"/>
+                            <constraint firstItem="oV4-9e-Rin" firstAttribute="top" secondItem="6QX-Ry-7Cr" secondAttribute="bottom" constant="10" id="fFx-Q4-y6b"/>
+                            <constraint firstItem="6QX-Ry-7Cr" firstAttribute="top" secondItem="VkO-tQ-PWx" secondAttribute="bottom" constant="8" id="jjv-z0-MG9"/>
+                            <constraint firstAttribute="trailing" secondItem="ajs-DL-PMy" secondAttribute="trailing" id="px9-tQ-IaX"/>
+                            <constraint firstItem="FIg-Lq-mFI" firstAttribute="trailing" secondItem="oV4-9e-Rin" secondAttribute="trailing" constant="80" id="sfX-Dl-eqI"/>
+                            <constraint firstItem="oV4-9e-Rin" firstAttribute="leading" secondItem="FIg-Lq-mFI" secondAttribute="leading" constant="80" id="woT-2z-maD"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="FIg-Lq-mFI"/>
                     </view>
                     <connections>
+                        <outlet property="errorLabel" destination="6QX-Ry-7Cr" id="sEP-pe-S0Z"/>
                         <outlet property="saveButton" destination="oV4-9e-Rin" id="Hkf-ce-ut9"/>
                         <outlet property="textView" destination="VkO-tQ-PWx" id="jEi-j4-ESk"/>
                         <outlet property="titleLabel" destination="KN3-T1-x9T" id="EEE-Yu-iFk"/>

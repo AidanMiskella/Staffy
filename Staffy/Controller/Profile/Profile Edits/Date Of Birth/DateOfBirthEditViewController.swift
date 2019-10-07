@@ -18,6 +18,10 @@ class DateOfBirthEditViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var dateOfBirthTextField: UITextField!
     
+    @IBOutlet weak var dobImage: UIImageView!
+    
+    @IBOutlet weak var errorLabel: UILabel!
+    
     @IBOutlet weak var saveButton: UIButton!
     
     var datePicker: UIDatePicker!
@@ -36,9 +40,12 @@ class DateOfBirthEditViewController: UIViewController, UITextFieldDelegate {
     func setupUI() {
         
         topView.layerGradient()
+        errorLabel.alpha = 0
         
         Utilities.styleLabel(label: titleLabel, font: .editProfileTitle, fontColor: .white)
-        Utilities.styleTextField(textfield: dateOfBirthTextField, font: .editProfileText, fontColor: .black, padding: 0.0)
+        Utilities.styleTextField(textfield: dateOfBirthTextField, font: .editProfileText, fontColor: .black, padding: 40.0)
+        Utilities.styleImage(imageView: dobImage, image: "calendar", imageColor: .lightGray)
+        Utilities.styleLabel(label: errorLabel, font: .loginError, fontColor: .red)
         Utilities.styleFilledButton(button: saveButton, font: .largeLoginButton, fontColor: .white, backgroundColor: .lightBlue, cornerRadius: 10.0)
     }
     
@@ -99,7 +106,8 @@ class DateOfBirthEditViewController: UIViewController, UITextFieldDelegate {
         
         if dateOfBirthTextField.text == "" {
             
-            self.navigationController?.popViewController(animated: true)
+            errorLabel.alpha = 1
+            errorLabel.text = "Please enter a date."
         } else {
             
             let ref = Firestore.firestore().collection(Constants.FirebaseDB.user_ref)

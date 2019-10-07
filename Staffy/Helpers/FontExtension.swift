@@ -23,6 +23,6 @@ extension UIFont {
     static let profileTableData = UIFont(name: "Avenir Next", size: 18)!
     static let editProfileTitle = UIFont(name: "AvenirNext-Bold", size: 28)!
     static let editProfilViewText = UIFont(name: "Avenir Next", size: 16)!
-    static let editProfileLabel = UIFont(name: "AvenirNext-Medium", size: 16)!
     static let editProfileText = UIFont(name: "Avenir Next", size: 18)!
+    static let editProfileInfo = UIFont(name: "Avenir", size: 14)!
 }

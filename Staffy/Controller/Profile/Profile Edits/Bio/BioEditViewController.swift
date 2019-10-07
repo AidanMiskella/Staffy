@@ -9,14 +9,17 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import GrowingTextView
 
-class BioEditViewController: UIViewController, UITextViewDelegate {
+class BioEditViewController: UIViewController {
 
     @IBOutlet weak var topView: UIView!
     
     @IBOutlet weak var titleLabel: UILabel!
     
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var textView: GrowingTextView!
+    
+    @IBOutlet weak var errorLabel: UILabel!
     
     @IBOutlet weak var saveButton: UIButton!
     
@@ -26,16 +29,16 @@ class BioEditViewController: UIViewController, UITextViewDelegate {
         // Do any additional setup after loading the view.
         setupUI()
         placeholders()
-        
-        textView.delegate = self
     }
     
     func setupUI() {
         
         topView.layerGradient()
+        errorLabel.alpha = 0
         
         Utilities.styleLabel(label: titleLabel, font: .editProfileTitle, fontColor: .white)
-        Utilities.styleTextView(textView: textView, font: .editProfileText, fontColor: .black)
+        Utilities.styleTextView(textView: textView, font: .editProfilViewText, fontColor: .black)
+        Utilities.styleLabel(label: errorLabel, font: .loginError, fontColor: .red)
         Utilities.styleFilledButton(button: saveButton, font: .largeLoginButton, fontColor: .white, backgroundColor: .lightBlue, cornerRadius: 10.0)
     }
     
@@ -43,28 +46,10 @@ class BioEditViewController: UIViewController, UITextViewDelegate {
         
         guard let currentUser = UserService.currentUser else { return }
         
+        textView.trimWhiteSpaceWhenEndEditing = false
         textView.text = currentUser.bio
-        textView.textColor = UIColor.lightGray
-    }
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        
-        if textView.textColor == UIColor.lightGray {
-            
-            textView.text = nil
-            textView.textColor = UIColor.black
-        }
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        
-        guard let currentUser = UserService.currentUser else { return }
-        
-        if textView.text.isEmpty {
-            
-            textView.text = currentUser.bio
-            textView.textColor = UIColor.lightGray
-        }
+        textView.textColor = UIColor.black
+        textView.maxLength = 200
     }
     
     @IBAction func saveButtonDidPress(_ sender: UIButton) {
@@ -73,7 +58,8 @@ class BioEditViewController: UIViewController, UITextViewDelegate {
         
         if textView.text == "" {
             
-            self.navigationController?.popViewController(animated: true)
+            errorLabel.alpha = 1
+            errorLabel.text = "Please enter a bio description."
         } else {
             
             let ref = Firestore.firestore().collection(Constants.FirebaseDB.user_ref)

@@ -24,6 +24,16 @@ class AddressEditViewController: UIViewController, UITextFieldDelegate, UIPicker
     
     @IBOutlet weak var address4: UITextField!
     
+    @IBOutlet weak var address1Image: UIImageView!
+    
+    @IBOutlet weak var address2Image: UIImageView!
+    
+    @IBOutlet weak var address3Image: UIImageView!
+    
+    @IBOutlet weak var address4Image: UIImageView!
+    
+    @IBOutlet weak var errorLabel: UILabel!
+    
     @IBOutlet weak var saveButton: UIButton!
     
     var countyPicker: UIPickerView!
@@ -44,12 +54,18 @@ class AddressEditViewController: UIViewController, UITextFieldDelegate, UIPicker
     func setupUI() {
         
         topView.layerGradient()
+        errorLabel.alpha = 0
         
         Utilities.styleLabel(label: titleLabel, font: .editProfileTitle, fontColor: .white)
-        Utilities.styleTextField(textfield: address1, font: .editProfileText, fontColor: .black, padding: 0.0)
-        Utilities.styleTextField(textfield: address2, font: .editProfileText, fontColor: .black, padding: 0.0)
-        Utilities.styleTextField(textfield: address3, font: .editProfileText, fontColor: .black, padding: 0.0)
-        Utilities.styleTextField(textfield: address4, font: .editProfileText, fontColor: .black, padding: 0.0)
+        Utilities.styleTextField(textfield: address1, font: .editProfileText, fontColor: .black, padding: 40.0)
+        Utilities.styleTextField(textfield: address2, font: .editProfileText, fontColor: .black, padding: 40.0)
+        Utilities.styleTextField(textfield: address3, font: .editProfileText, fontColor: .black, padding: 40.0)
+        Utilities.styleTextField(textfield: address4, font: .editProfileText, fontColor: .black, padding: 40.0)
+        Utilities.styleImage(imageView: address1Image, image: "home", imageColor: .lightGray)
+        Utilities.styleImage(imageView: address2Image, image: "home", imageColor: .lightGray)
+        Utilities.styleImage(imageView: address3Image, image: "home", imageColor: .lightGray)
+        Utilities.styleImage(imageView: address4Image, image: "home", imageColor: .lightGray)
+        Utilities.styleLabel(label: errorLabel, font: .loginError, fontColor: .red)
         Utilities.styleFilledButton(button: saveButton, font: .largeLoginButton, fontColor: .white, backgroundColor: .lightBlue, cornerRadius: 10.0)
     }
     
@@ -119,7 +135,8 @@ class AddressEditViewController: UIViewController, UITextFieldDelegate, UIPicker
         
         if address1.text == "" || address3.text == "" || address4.text == "" {
             
-            print("Error, fill in all fields")
+            errorLabel.alpha = 1
+            errorLabel.text = "Please fill in all fields."
         } else {
             
             var fullAddress: String

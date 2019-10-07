@@ -14,6 +14,7 @@ target 'Staffy' do
   pod 'StarryStars'
   pod 'ImagePicker'
   pod 'Firebase/Storage'
-  pod "NADocumentPicker"
+  pod 'NADocumentPicker'
+  pod 'GrowingTextView'
 
 end

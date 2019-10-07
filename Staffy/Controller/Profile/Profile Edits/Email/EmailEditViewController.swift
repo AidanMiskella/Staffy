@@ -17,9 +17,17 @@ class EmailEditViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     
+    @IBOutlet weak var emailImage: UIImageView!
+    
+    @IBOutlet weak var passwordImage: UIImageView!
+    
     @IBOutlet weak var emailTextField: UITextField!
     
     @IBOutlet weak var passwordTextField: UITextField!
+    
+    @IBOutlet weak var infoLabel: UILabel!
+    
+    @IBOutlet weak var errorLabel: UILabel!
     
     @IBOutlet weak var saveButton: UIButton!
     
@@ -34,18 +42,21 @@ class EmailEditViewController: UIViewController {
     func setupUI() {
         
         topView.layerGradient()
+        errorLabel.alpha = 0
         
         Utilities.styleLabel(label: titleLabel, font: .editProfileTitle, fontColor: .white)
-        Utilities.styleTextField(textfield: emailTextField, font: .editProfileText, fontColor: .black, padding: 0.0)
-        Utilities.styleTextField(textfield: passwordTextField, font: .editProfileText, fontColor: .black, padding: 0.0)
+        Utilities.styleTextField(textfield: emailTextField, font: .editProfileText, fontColor: .black, padding: 40.0)
+        Utilities.styleTextField(textfield: passwordTextField, font: .editProfileText, fontColor: .black, padding: 40.0)
         Utilities.styleFilledButton(button: saveButton, font: .largeLoginButton, fontColor: .white, backgroundColor: .lightBlue, cornerRadius: 10.0)
+        Utilities.styleImage(imageView: emailImage, image: "envelope", imageColor: .lightGray)
+        Utilities.styleImage(imageView: passwordImage, image: "lock", imageColor: .lightGray)
+        Utilities.styleLabel(label: infoLabel, font: .editProfileInfo, fontColor: .black)
+        Utilities.styleLabel(label: errorLabel, font: .loginError, fontColor: .red)
     }
     
     func placeholders() {
         
-        guard let currentUser = UserService.currentUser else { return }
-        
-        emailTextField.placeholder = currentUser.email
+        emailTextField.placeholder = Auth.auth().currentUser?.email
         passwordTextField.placeholder = "Current password"
     }
     
@@ -84,28 +95,31 @@ class EmailEditViewController: UIViewController {
     }
     
     @IBAction func saveButtonDidPress(_ sender: UIButton) {
-     
-        guard let currentUser = UserService.currentUser else { return }
-        
-        if emailTextField.text == "" {
+             
+        if emailTextField.text == "" || passwordTextField.text == "" {
             
-            self.navigationController?.popViewController(animated: true)
+            errorLabel.alpha = 1
+            errorLabel.text = "Please fill in all fields."
         } else {
             
-            let credentials: AuthCredential = EmailAuthProvider.credential(withEmail: currentUser.email!, password: passwordTextField.text!)
+            let credentials: AuthCredential = EmailAuthProvider.credential(withEmail: (Auth.auth().currentUser?.email)!, password: passwordTextField.text!)
             
             Auth.auth().currentUser?.reauthenticate(with: credentials, completion: { (authData, error) in
                 
                 if let error = error {
                     
-                    print("Error \(error)")
+                    let authError = AuthErrorCode(rawValue: error._code)
+                    self.errorLabel.alpha = 1
+                    self.errorLabel.text = authError?.errorMessage
                 } else {
                     
                     Auth.auth().currentUser?.updateEmail(to: self.emailTextField.text!, completion: { (error) in
                         
                         if let error = error {
                             
-                            print("Error \(error)")
+                            let emailUpdateError = AuthErrorCode(rawValue: error._code)
+                            self.errorLabel.alpha = 1
+                            self.errorLabel.text = emailUpdateError?.errorMessage
                         } else {
                             
                             let ref = Firestore.firestore().collection(Constants.FirebaseDB.user_ref)
@@ -120,7 +134,6 @@ class EmailEditViewController: UIViewController {
                                     print("Error updating information \(error)")
                                 } else {
                                     
-                                    currentUser.email = self.emailTextField.text
                                     self.sendVerificationEmail()
                                 }
                             }

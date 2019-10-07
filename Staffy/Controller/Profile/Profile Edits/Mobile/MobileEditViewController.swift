@@ -18,6 +18,10 @@ class MobileEditViewController: UIViewController {
     
     @IBOutlet weak var mobileTextField: UITextField!
     
+    @IBOutlet weak var mobileImage: UIImageView!
+    
+    @IBOutlet weak var errorLabel: UILabel!
+    
     @IBOutlet weak var saveButton: UIButton!
 
     override func viewDidLoad() {
@@ -31,9 +35,12 @@ class MobileEditViewController: UIViewController {
     func setupUI() {
         
         topView.layerGradient()
+        errorLabel.alpha = 0
         
         Utilities.styleLabel(label: titleLabel, font: .editProfileTitle, fontColor: .white)
-        Utilities.styleTextField(textfield: mobileTextField, font: .editProfileText, fontColor: .black, padding: 0.0)
+        Utilities.styleTextField(textfield: mobileTextField, font: .editProfileText, fontColor: .black, padding: 40.0)
+        Utilities.styleLabel(label: errorLabel, font: .loginError, fontColor: .red)
+        Utilities.styleImage(imageView: mobileImage, image: "phone-handset", imageColor: .lightGray)
         Utilities.styleFilledButton(button: saveButton, font: .largeLoginButton, fontColor: .white, backgroundColor: .lightBlue, cornerRadius: 10.0)
     }
     
@@ -43,7 +50,7 @@ class MobileEditViewController: UIViewController {
         
         if currentUser.mobile == "Not set" {
             
-            mobileTextField.placeholder = "01 234 5678"
+            mobileTextField.placeholder = "012 345 6789"
         } else {
             
             mobileTextField.placeholder = currentUser.mobile
@@ -56,7 +63,8 @@ class MobileEditViewController: UIViewController {
         
         if mobileTextField.text == "" {
             
-            self.navigationController?.popViewController(animated: true)
+            errorLabel.alpha = 1
+            errorLabel.text = "Please enter a mobile number."
         } else {
             
             let ref = Firestore.firestore().collection(Constants.FirebaseDB.user_ref)

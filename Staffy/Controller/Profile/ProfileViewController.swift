@@ -71,6 +71,7 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
         contentView.roundCorners([.topLeft, .topRight], radius: 30.0)
         
         bioLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(bioTapped)))
+        bioLabel.sizeToFit()
         
         jobAlertView.backgroundColor = .lightBlue
         jobAlertImage.tintColor = .white
@@ -199,7 +200,7 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
         guard let currentUser = UserService.currentUser else { return tempCells }
         
         let nameCell = ProfileCellData(title: "Name", data: "\(currentUser.firstName) \(currentUser.lastName)")
-        let emailCell = ProfileCellData(title: "Email", data: currentUser.email!)
+        let emailCell = ProfileCellData(title: "Email", data: (Auth.auth().currentUser?.email)!)
         let dateOfBirthCell = ProfileCellData(title: "Date of Birth", data: currentUser.dateOfBirth!)
         let genderCell = ProfileCellData(title: "Gender", data: currentUser.gender!)
         let mobileCell = ProfileCellData(title: "Mobile", data: currentUser.mobile!)

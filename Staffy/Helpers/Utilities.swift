@@ -17,22 +17,6 @@ class Utilities {
         
         textView.font = font
         textView.textColor = fontColor
-        
-        let fixedWidth = textView.frame.size.width
-        
-        let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
-        
-        textView.frame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
-        
-        textView.isScrollEnabled = false
-        
-//        let bottomLine = CALayer()
-//
-//        bottomLine.frame = CGRect(x: 0, y: textView.frame.height - 1, width: textView.frame.width, height: 1)
-//
-//        bottomLine.backgroundColor = UIColor.lightGray.cgColor
-//
-//        textView.layer.addSublayer(bottomLine)
     }
     
     static func styleLabel(label: UILabel, font: UIFont, fontColor: UIColor) {
@@ -45,6 +29,7 @@ class Utilities {
         
         textfield.font = font
         textfield.textColor = fontColor
+        textfield.clearButtonMode = UITextField.ViewMode.whileEditing
         
         textfield.borderStyle = .none
         textfield.layer.backgroundColor = UIColor.white.cgColor
