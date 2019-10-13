@@ -16,5 +16,6 @@ target 'Staffy' do
   pod 'Firebase/Storage'
   pod 'NADocumentPicker'
   pod 'GrowingTextView'
+  pod 'FoldingCell'
 
 end

@@ -30,6 +30,7 @@
 		7405A503233C2CC90046BC71 /* MobileEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7405A502233C2CC90046BC71 /* MobileEdit.storyboard */; };
 		7405A505233C2CD50046BC71 /* AddressEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7405A504233C2CD50046BC71 /* AddressEdit.storyboard */; };
 		740C16CA2336343F00266C62 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740C16C92336343F00266C62 /* ImageService.swift */; };
+		74107EBE234B6E5800059F34 /* FoldingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74107EBD234B6E5800059F34 /* FoldingCell.swift */; };
 		7411E32922F0BA3200E3830A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7411E32822F0BA3200E3830A /* AppDelegate.swift */; };
 		7411E32E22F0BA3200E3830A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7411E32C22F0BA3200E3830A /* Main.storyboard */; };
 		7411E33022F0BA3500E3830A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7411E32F22F0BA3500E3830A /* Assets.xcassets */; };
@@ -77,6 +78,7 @@
 		7405A502233C2CC90046BC71 /* MobileEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MobileEdit.storyboard; sourceTree = "<group>"; };
 		7405A504233C2CD50046BC71 /* AddressEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddressEdit.storyboard; sourceTree = "<group>"; };
 		740C16C92336343F00266C62 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
+		74107EBD234B6E5800059F34 /* FoldingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldingCell.swift; sourceTree = "<group>"; };
 		7411E32522F0BA3200E3830A /* Staffy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Staffy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7411E32822F0BA3200E3830A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7411E32D22F0BA3200E3830A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 			children = (
 				7453F209233135270019EECE /* ProfileCellData.swift */,
 				7453F2052331339D0019EECE /* ProfileTableViewCell.swift */,
+				74107EBD234B6E5800059F34 /* FoldingCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				7403019D233CB3390040FAF5 /* NameEditViewController.swift in Sources */,
 				7403CFCC22F8A16D00C6C8D1 /* ColorExtension.swift in Sources */,
 				740301A7233CB3B00040FAF5 /* AddressEditViewController.swift in Sources */,
+				74107EBE234B6E5800059F34 /* FoldingCell.swift in Sources */,
 				74FC54BF2343C16300938320 /* BioEditViewController.swift in Sources */,
 				743BE9EA22F0C5C6006A2F6E /* Constants.swift in Sources */,
 				740301A1233CB3680040FAF5 /* DateOfBirthEditViewController.swift in Sources */,
