@@ -12,10 +12,6 @@ import FirebaseAuth
 
 class NameEditViewController: UIViewController {
     
-    @IBOutlet weak var topView: UIView!
-    
-    @IBOutlet weak var titleLabel: UILabel!
-    
     @IBOutlet weak var firstNameTextField: UITextField!
     
     @IBOutlet weak var firstNameImage: UIImageView!
@@ -38,9 +34,6 @@ class NameEditViewController: UIViewController {
     
     func setupUI() {
         
-        topView.layerGradient()
-        
-        Utilities.styleLabel(label: titleLabel, font: .editProfileTitle, fontColor: .white)
         Utilities.styleTextField(textfield: firstNameTextField, font: .editProfileText, fontColor: .black, padding: 40.0)
         Utilities.styleTextField(textfield: lastNameTextField, font: .editProfileText, fontColor: .black, padding: 40.0)
         Utilities.styleFilledButton(button: saveButton, font: .largeLoginButton, fontColor: .white, backgroundColor: .lightBlue, cornerRadius: 10.0)

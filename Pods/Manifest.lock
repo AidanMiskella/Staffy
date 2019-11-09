@@ -6,6 +6,7 @@ PODS:
     - BoringSSL-GRPC/Interface (= 0.0.3)
   - BoringSSL-GRPC/Interface (0.0.3)
   - BrightFutures (8.0.0)
+  - Cosmos (19.0.3)
   - Firebase/Auth (6.4.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 6.2.0)
@@ -117,9 +118,9 @@ PODS:
   - nanopb/encode (0.3.901)
   - Protobuf (3.9.0)
   - SCLAlertView (0.8)
-  - StarryStars (1.0.0)
 
 DEPENDENCIES:
+  - Cosmos
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Firestore
@@ -130,12 +131,12 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - NADocumentPicker
   - SCLAlertView
-  - StarryStars
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - BoringSSL-GRPC
     - BrightFutures
+    - Cosmos
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -158,11 +159,11 @@ SPEC REPOS:
     - nanopb
     - Protobuf
     - SCLAlertView
-    - StarryStars
 
 SPEC CHECKSUMS:
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
   BrightFutures: f8427b46feabaf73c5e71ace7d86d65dfbb47696
+  Cosmos: a6fb17284281fa12cf4c85c2efecd440a215ec44
   Firebase: 9445469655a98e9010737f4bc4720e5bda465873
   FirebaseAnalytics: 69fe25866d2ec87c6f02d72c3c9a82bce9c065a0
   FirebaseAuth: 68cfa47997f53d29ce978e7a615fb78d7925fcbe
@@ -185,8 +186,7 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 1097ca58584c8d9be81bfbf2c5ff5975648dd87a
   SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
-  StarryStars: 1d5bdde3060a6ab5c68c8229506040ee297efceb
 
-PODFILE CHECKSUM: b080cc9f5d2ec613ea064cdd4e2951d3d03fb124
+PODFILE CHECKSUM: f6fd5158adb4b2b0be7bf333827c0abf2046f82e
 
 COCOAPODS: 1.7.4

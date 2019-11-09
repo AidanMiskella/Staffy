@@ -13,10 +13,6 @@ import SCLAlertView
 
 class RegisterViewController: UIViewController {
     
-    @IBOutlet weak var topImageHeight: NSLayoutConstraint!
-    
-    @IBOutlet weak var titleLabel: UILabel!
-    
     @IBOutlet weak var firstNameText: UITextField!
     
     @IBOutlet weak var lastNameText: UITextField!
@@ -55,14 +51,11 @@ class RegisterViewController: UIViewController {
         Utilities.styleTextField(textfield: passwordText, font: .textField, fontColor: .black, padding: 40.0)
         Utilities.styleFilledButton(button: submitButton, font: .largeLoginButton, fontColor: .white, backgroundColor: .lightBlue, cornerRadius: 20.0)
         Utilities.styleLabel(label: errorLabel, font: .loginError, fontColor: .red)
-        Utilities.styleLabel(label: titleLabel, font: .loginTitle, fontColor: .lightGray)
         
         Utilities.styleImage(imageView: firstNameImage, image: "user", imageColor: .lightGray)
         Utilities.styleImage(imageView: lastNameImage, image: "user", imageColor: .lightGray)
         Utilities.styleImage(imageView: emailImage, image: "envelope", imageColor: .lightGray)
         Utilities.styleImage(imageView: passwordImage, image: "lock", imageColor: .lightGray)
-        
-        topImageHeight.constant = UIScreen.main.bounds.height / 2.25
     }
     
     @IBAction func createUserButtonTapped(_ sender: UIButton) {
@@ -111,7 +104,7 @@ class RegisterViewController: UIViewController {
             Constants.FirebaseDB.jobs_accepted: [],
             Constants.FirebaseDB.documents: [],
             Constants.FirebaseDB.dob: Constants.Profile.notSet,
-            Constants.FirebaseDB.date_created: Utilities.dateFormatter(Date())
+            Constants.FirebaseDB.date_created: Utilities.dateFormatterFullMonth(Date())
             ], completion: { (error) in
                 if let error = error {
                     

@@ -12,10 +12,6 @@ import FirebaseAuth
 
 class AddressEditViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    @IBOutlet weak var topView: UIView!
-    
-    @IBOutlet weak var titleLabel: UILabel!
-    
     @IBOutlet weak var address1: UITextField!
     
     @IBOutlet weak var address2: UITextField!
@@ -53,10 +49,8 @@ class AddressEditViewController: UIViewController, UITextFieldDelegate, UIPicker
     
     func setupUI() {
         
-        topView.layerGradient()
         errorLabel.alpha = 0
         
-        Utilities.styleLabel(label: titleLabel, font: .editProfileTitle, fontColor: .white)
         Utilities.styleTextField(textfield: address1, font: .editProfileText, fontColor: .black, padding: 40.0)
         Utilities.styleTextField(textfield: address2, font: .editProfileText, fontColor: .black, padding: 40.0)
         Utilities.styleTextField(textfield: address3, font: .editProfileText, fontColor: .black, padding: 40.0)
@@ -100,7 +94,7 @@ class AddressEditViewController: UIViewController, UITextFieldDelegate, UIPicker
     
     @objc func doneClick() {
         
-        address4.text = Constants.Profile.countyArray[self.countyPicker.selectedRow(inComponent: 0)]
+        address4.text = Constants.Arrays.countyArray[self.countyPicker.selectedRow(inComponent: 0)]
         address4.resignFirstResponder()
     }
     
@@ -116,12 +110,12 @@ class AddressEditViewController: UIViewController, UITextFieldDelegate, UIPicker
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
-        return Constants.Profile.countyArray.count
+        return Constants.Arrays.countyArray.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-        return Constants.Profile.countyArray[row]
+        return Constants.Arrays.countyArray[row]
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

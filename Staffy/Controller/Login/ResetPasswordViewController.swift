@@ -12,10 +12,6 @@ import SCLAlertView
 
 class ResetPasswordViewController: UIViewController {
 
-    @IBOutlet weak var topImageHeight: NSLayoutConstraint!
-    
-    @IBOutlet weak var titleLabel: UILabel!
-    
     @IBOutlet weak var emailText: UITextField!
     
     @IBOutlet weak var submitButton: UIButton!
@@ -37,11 +33,8 @@ class ResetPasswordViewController: UIViewController {
         Utilities.styleTextField(textfield: emailText, font: .textField, fontColor: .black, padding: 40.0)
         Utilities.styleFilledButton(button: submitButton, font: .largeLoginButton, fontColor: .white, backgroundColor: .lightBlue, cornerRadius: 20.0)
         Utilities.styleLabel(label: errorLabel, font: .loginError, fontColor: .red)
-        Utilities.styleLabel(label: titleLabel, font: .loginTitle, fontColor: .lightGray)
         
         Utilities.styleImage(imageView: emailImage, image: "envelope", imageColor: .lightGray)
-        
-        topImageHeight.constant = UIScreen.main.bounds.height / 2.25
     }
     
     @IBAction func submitButtonTapped(_ sender: UIButton) {

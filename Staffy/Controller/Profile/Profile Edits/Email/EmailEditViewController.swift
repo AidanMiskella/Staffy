@@ -13,10 +13,6 @@ import SCLAlertView
 
 class EmailEditViewController: UIViewController {
 
-    @IBOutlet weak var topView: UIView!
-    
-    @IBOutlet weak var titleLabel: UILabel!
-    
     @IBOutlet weak var emailImage: UIImageView!
     
     @IBOutlet weak var passwordImage: UIImageView!
@@ -41,10 +37,8 @@ class EmailEditViewController: UIViewController {
     
     func setupUI() {
         
-        topView.layerGradient()
         errorLabel.alpha = 0
         
-        Utilities.styleLabel(label: titleLabel, font: .editProfileTitle, fontColor: .white)
         Utilities.styleTextField(textfield: emailTextField, font: .editProfileText, fontColor: .black, padding: 40.0)
         Utilities.styleTextField(textfield: passwordTextField, font: .editProfileText, fontColor: .black, padding: 40.0)
         Utilities.styleFilledButton(button: saveButton, font: .largeLoginButton, fontColor: .white, backgroundColor: .lightBlue, cornerRadius: 10.0)

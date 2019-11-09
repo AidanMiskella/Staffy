@@ -12,10 +12,6 @@ import FirebaseAuth
 
 class DateOfBirthEditViewController: UIViewController, UITextFieldDelegate {
 
-    @IBOutlet weak var topView: UIView!
-    
-    @IBOutlet weak var titleLabel: UILabel!
-    
     @IBOutlet weak var dateOfBirthTextField: UITextField!
     
     @IBOutlet weak var dobImage: UIImageView!
@@ -39,10 +35,8 @@ class DateOfBirthEditViewController: UIViewController, UITextFieldDelegate {
     
     func setupUI() {
         
-        topView.layerGradient()
         errorLabel.alpha = 0
         
-        Utilities.styleLabel(label: titleLabel, font: .editProfileTitle, fontColor: .white)
         Utilities.styleTextField(textfield: dateOfBirthTextField, font: .editProfileText, fontColor: .black, padding: 40.0)
         Utilities.styleImage(imageView: dobImage, image: "calendar", imageColor: .lightGray)
         Utilities.styleLabel(label: errorLabel, font: .loginError, fontColor: .red)
@@ -90,6 +84,7 @@ class DateOfBirthEditViewController: UIViewController, UITextFieldDelegate {
         dateOfBirthTextField.text = formatter.string(from: datePicker.date)
         dateOfBirthTextField.resignFirstResponder()
     }
+    
     @objc func cancelClick() {
         
         dateOfBirthTextField.resignFirstResponder()

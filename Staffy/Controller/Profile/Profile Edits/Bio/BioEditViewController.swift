@@ -13,10 +13,6 @@ import GrowingTextView
 
 class BioEditViewController: UIViewController {
 
-    @IBOutlet weak var topView: UIView!
-    
-    @IBOutlet weak var titleLabel: UILabel!
-    
     @IBOutlet weak var textView: GrowingTextView!
     
     @IBOutlet weak var errorLabel: UILabel!
@@ -33,10 +29,8 @@ class BioEditViewController: UIViewController {
     
     func setupUI() {
         
-        topView.layerGradient()
         errorLabel.alpha = 0
         
-        Utilities.styleLabel(label: titleLabel, font: .editProfileTitle, fontColor: .white)
         Utilities.styleTextView(textView: textView, font: .editProfilViewText, fontColor: .black)
         Utilities.styleLabel(label: errorLabel, font: .loginError, fontColor: .red)
         Utilities.styleFilledButton(button: saveButton, font: .largeLoginButton, fontColor: .white, backgroundColor: .lightBlue, cornerRadius: 10.0)

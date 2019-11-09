@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
-import StarryStars
+import Cosmos
 import ImagePicker
 
 class ProfileViewController: UIViewController, ImagePickerDelegate {
@@ -18,13 +18,11 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
     
     @IBOutlet weak var profileImage: UIImageView!
     
-    @IBOutlet weak var firstNameLabel: UILabel!
-    
     @IBOutlet weak var contentView: UIView!
     
     @IBOutlet weak var middleRatingView: UIView!
     
-    @IBOutlet weak var ratingView: RatingView!
+    @IBOutlet weak var ratingView: CosmosView!
     
     @IBOutlet weak var ratingLabel: UILabel!
     
@@ -54,7 +52,7 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
 
         // Do any additional setup after loading the view.
         setUpElements()
-        topProfileImageView.layerGradient()
+        topProfileImageView.backgroundColor = .lightBlue
         dataCells = createArray()
         
         tableView.delegate = self
@@ -63,7 +61,6 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
     
     func setUpElements() {
 
-        Utilities.styleLabel(label: firstNameLabel, font: .boldLargeTitle, fontColor: .white)
         Utilities.styleLabel(label: ratingLabel, font: .subTitle, fontColor: .gray)
         Utilities.styleLabel(label: bioLabel, font: .subTitle, fontColor: .darkGray)
         Utilities.styleLabel(label: jobAlertLabel, font: .subTitle, fontColor: .white)
@@ -84,10 +81,7 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
         profileImage.isUserInteractionEnabled = true
         profileImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(profileImageTapped)))
         
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = .clear
+        Utilities.setupNavigationStyleNoBorder(navigationController!)
     }
     
     func setUpProfile() {
@@ -99,14 +93,13 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
             self.profileImage.image = image
         }
         
-        firstNameLabel.text = "\(currentUser.firstName) \(currentUser.lastName)"
         ratingView.rating = currentUser.reviewRating!
         ratingLabel.text = getRatingText(rating: currentUser.reviewRating!)
         bioLabel.text = currentUser.bio
         
     }
     
-    func getRatingText(rating: Float) -> String {
+    func getRatingText(rating: Double) -> String {
     
         switch rating {
         
@@ -206,6 +199,7 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
         let mobileCell = ProfileCellData(title: "Mobile", data: currentUser.mobile!)
         let addressCell = ProfileCellData(title: "Address", data: currentUser.address!)
         let documentsCell = ProfileCellData(title: "Documents", data: "\(currentUser.documents!.count) Documents")
+        let passwordCell = ProfileCellData(title: "Password", data: "*********")
         
         tempCells.append(nameCell)
         tempCells.append(emailCell)
@@ -214,6 +208,7 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
         tempCells.append(mobileCell)
         tempCells.append(addressCell)
         tempCells.append(documentsCell)
+        tempCells.append(passwordCell)
         
         return tempCells
     }

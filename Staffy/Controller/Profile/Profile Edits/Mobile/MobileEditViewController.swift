@@ -12,10 +12,6 @@ import FirebaseAuth
 
 class MobileEditViewController: UIViewController {
     
-    @IBOutlet weak var topView: UIView!
-    
-    @IBOutlet weak var titleLabel: UILabel!
-    
     @IBOutlet weak var mobileTextField: UITextField!
     
     @IBOutlet weak var mobileImage: UIImageView!
@@ -34,10 +30,8 @@ class MobileEditViewController: UIViewController {
     
     func setupUI() {
         
-        topView.layerGradient()
         errorLabel.alpha = 0
         
-        Utilities.styleLabel(label: titleLabel, font: .editProfileTitle, fontColor: .white)
         Utilities.styleTextField(textfield: mobileTextField, font: .editProfileText, fontColor: .black, padding: 40.0)
         Utilities.styleLabel(label: errorLabel, font: .loginError, fontColor: .red)
         Utilities.styleImage(imageView: mobileImage, image: "phone-handset", imageColor: .lightGray)

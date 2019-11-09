@@ -35,9 +35,12 @@ struct Constants {
     struct FirebaseDB {
         
         static let user_ref = "users"
+        static let company_ref = "companies"
+        static let jobs_ref = "jobs"
         
         static let user_id = "userID"
         static let email = "email"
+        static let company_name = "companyName"
         static let first_name = "firstName"
         static let last_name = "lastName"
         static let avatar_url = "avatarURL"
@@ -49,8 +52,27 @@ struct Constants {
         static let gender = "gender"
         static let dob = "dob"
         static let date_created = "dateCreated"
+        static let jobs_created = "jobsCreated"
         static let jobs_applied = "jobsApplied"
         static let jobs_accepted = "jobsAccepted"
+        
+        static let job_id = "jobId"
+        static let company_id = "companyId"
+        static let title = "title"
+        static let job_company_name = "jobCompanyName"
+        static let experience = "experience"
+        static let positions = "positions"
+        static let posted_date = "postedDate"
+        static let start_date = "startDate"
+        static let end_date = "endDate"
+        static let start_time = "startTime"
+        static let end_time = "endTime"
+        static let description = "description"
+        static let pay = "pay"
+        static let company_email = "companyEmail"
+        static let company_phone = "companyPhone"
+        static let applicants = "applicants"
+        
     }
     
     struct Profile {
@@ -62,8 +84,14 @@ struct Constants {
         static let bioDescription = """
                                     This is a few short lines to describe who you are, what you do and what kind of job you are looking for. Edit your personal statement by clicking below.
                                     """
+    }
+    
+    struct Arrays {
+        
         static let genderArray = ["Male", "Female", "Other"]
         static let countyArray = ["Co. Antrim", "Co. Armagh", "Co. Carlow", "Co. Cavan", "Co. Clare", "Co. Cork", "Co. Derry", "Co. Donegal", "Co. Down", "Co. Dublin", "Co. Fermanagh", "Co. Galway", "Co. Kerry", "Co. Kildare", "Co. Kilkenny", "Co. Laois", "Co. Leitrim", "Co. Limerick", "Co. Longford", "Co. Louth", "Co. Mayo", "Co. Meath", "Co. Monaghan", "Co. Offaly", "Co. Roscommon", "Co. Sligo", "Co. Tipperary", "Co. Tyrone", "Co. Waterford", "Co. Westmeath", "Co. Wexford", "Co. Wicklow"]
+        static let experienceArray = ["No Experience Required", "Experience Required", "Experience Required (1+ Year)", "Experience Required (2+ Years)", "Experience Required (3+ Years)", "Experience Required (4+ Years)", "Experience Required (5+ Year)", "Experience Required (10+ Year)"]
+        static let positionsArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10+", "20+", "50+", "100+"]
     }
     
     struct AlertView {

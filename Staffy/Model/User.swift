@@ -15,30 +15,30 @@ class User {
     var lastName: String
     var avatarURL: URL?
     var bio: String?
-    var reviewRating: Float?
+    var reviewRating: Double?
     var mobile: String?
     var documents: [Any]?
     var address: String?
     var gender: String?
     var dateOfBirth: String?
     var dateProfileCreated: String
-    var jobsApplied: [Any]?
-    var jobsAccepted: [Any]?
+    var jobsApplied: [String]?
+    var jobsAccepted: [String]?
     
     init(userId: String,
          firstName: String,
          lastName: String,
          avatarURL: URL,
          bio: String?,
-         reviewRating: Float?,
+         reviewRating: Double?,
          mobile: String?,
          documents: [Any]?,
          address: String?,
          gender: String?,
          dateOfBirth: String?,
          dateProfileCreated: String,
-         jobsApplied: [Any]?,
-         jobsAccepted: [Any]?) {
+         jobsApplied: [String]?,
+         jobsAccepted: [String]?) {
         
         self.userId = userId
         self.firstName = firstName

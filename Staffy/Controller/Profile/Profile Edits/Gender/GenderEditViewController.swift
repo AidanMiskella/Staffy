@@ -12,10 +12,6 @@ import FirebaseAuth
 
 class GenderEditViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    @IBOutlet weak var topView: UIView!
-    
-    @IBOutlet weak var titleLabel: UILabel!
-    
     @IBOutlet weak var genderTextField: UITextField!
     
     @IBOutlet weak var genderImage: UIImageView!
@@ -41,12 +37,10 @@ class GenderEditViewController: UIViewController, UITextFieldDelegate, UIPickerV
     
     func setupUI() {
         
-        topView.layerGradient()
         errorLabel.alpha = 0
         
         Utilities.styleLabel(label: errorLabel, font: .loginError, fontColor: .red)
         Utilities.styleImage(imageView: genderImage, image: "gender", imageColor: .lightGray)
-        Utilities.styleLabel(label: titleLabel, font: .editProfileTitle, fontColor: .white)
         Utilities.styleTextField(textfield: genderTextField, font: .editProfileText, fontColor: .black, padding: 40.0)
         Utilities.styleFilledButton(button: saveButton, font: .largeLoginButton, fontColor: .white, backgroundColor: .lightBlue, cornerRadius: 10.0)
     }
@@ -87,7 +81,7 @@ class GenderEditViewController: UIViewController, UITextFieldDelegate, UIPickerV
     
     @objc func doneClick() {
         
-        genderTextField.text = Constants.Profile.genderArray[self.genderPicker.selectedRow(inComponent: 0)]
+        genderTextField.text = Constants.Arrays.genderArray[self.genderPicker.selectedRow(inComponent: 0)]
         genderTextField.resignFirstResponder()
     }
     
@@ -103,12 +97,12 @@ class GenderEditViewController: UIViewController, UITextFieldDelegate, UIPickerV
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
-        return Constants.Profile.genderArray.count
+        return Constants.Arrays.genderArray.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-        return Constants.Profile.genderArray[row]
+        return Constants.Arrays.genderArray[row]
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

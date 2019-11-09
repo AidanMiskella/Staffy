@@ -11,27 +11,15 @@ import NADocumentPicker
 
 class DocumentsViewController: UIViewController {
 
-    @IBOutlet weak var topView: UIView!
-    
-    @IBOutlet weak var titleLabel: UILabel!
-    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setupUI()
         
         tableView.delegate = self
         tableView.dataSource = self
-    }
-    
-    func setupUI() {
-        
-        topView.layerGradient()
-        
-        Utilities.styleLabel(label: titleLabel, font: .editProfileTitle, fontColor: .white)
     }
     
     @IBAction func addDocumentsTapped(_ sender: UIBarButtonItem) {
