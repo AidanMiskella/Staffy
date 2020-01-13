@@ -118,6 +118,7 @@ PODS:
   - nanopb/encode (0.3.901)
   - Protobuf (3.9.0)
   - SCLAlertView (0.8)
+  - SignaturePad (1.1.1)
 
 DEPENDENCIES:
   - Cosmos
@@ -131,6 +132,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - NADocumentPicker
   - SCLAlertView
+  - SignaturePad
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -159,6 +161,7 @@ SPEC REPOS:
     - nanopb
     - Protobuf
     - SCLAlertView
+    - SignaturePad
 
 SPEC CHECKSUMS:
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
@@ -186,7 +189,8 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 1097ca58584c8d9be81bfbf2c5ff5975648dd87a
   SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
+  SignaturePad: b0737dd95909731532e7bea0214e603bed72796f
 
-PODFILE CHECKSUM: f6fd5158adb4b2b0be7bf333827c0abf2046f82e
+PODFILE CHECKSUM: e5eac30bff097d7a0b59a56afcd07b4fe08038f3
 
 COCOAPODS: 1.7.4

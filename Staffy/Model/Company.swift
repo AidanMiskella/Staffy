@@ -20,6 +20,7 @@ class Company {
     var mobile: String?
     var address: String?
     var dateProfileCreated: String
+    var jobsCompleted: Int
     
     init(userId: String,
          companyName: String,
@@ -30,7 +31,8 @@ class Company {
          reviewRating: Double?,
          mobile: String?,
          address: String?,
-         dateProfileCreated: String) {
+         dateProfileCreated: String,
+         jobsCompleted: Int) {
         
         self.userId = userId
         self.companyName = companyName
@@ -42,5 +44,6 @@ class Company {
         self.mobile = mobile
         self.address = address
         self.dateProfileCreated = dateProfileCreated
+        self.jobsCompleted = jobsCompleted
     }
 }

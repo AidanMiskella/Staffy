@@ -37,6 +37,7 @@ struct Constants {
         static let user_ref = "users"
         static let company_ref = "companies"
         static let jobs_ref = "jobs"
+        static let reports_ref = "reports"
         
         static let user_id = "userID"
         static let email = "email"
@@ -72,7 +73,20 @@ struct Constants {
         static let company_email = "companyEmail"
         static let company_phone = "companyPhone"
         static let applicants = "applicants"
+        static let accepted = "accepted"
+        static let status = "status"
+        static let all_applicants = "allApplicants"
+        static let jobs_completed = "jobsCompleted"
         
+        static let report_id = "reportId"
+        static let report_status = "reportStatus"
+        static let clocking_messages = "clockingMessages"
+        static let employer_star_rating = "employerStarRating"
+        static let employer_comment = "employerComment"
+        static let signature_url = "signatureURL"
+        static let employee_star_rating = "employeeStarRating"
+        static let employee_comment = "employeeComment"
+        static let report_open = "reportOpen"
     }
     
     struct Profile {
@@ -84,6 +98,15 @@ struct Constants {
         static let bioDescription = """
                                     This is a few short lines to describe who you are, what you do and what kind of job you are looking for. Edit your personal statement by clicking below.
                                     """
+    }
+    
+    struct Report {
+        
+        static let notClockedIn = "Not clocked in"
+        static let clockedIn = "Clocked in"
+        static let onBreak = "On break"
+        static let clockedOut = "Clocked out"
+        static let reportComlpete = "Report complete"
     }
     
     struct Arrays {

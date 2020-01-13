@@ -22,8 +22,10 @@ class User {
     var gender: String?
     var dateOfBirth: String?
     var dateProfileCreated: String
+    var allApplications: [String]?
     var jobsApplied: [String]?
     var jobsAccepted: [String]?
+    var jobsCompleted: Int?
     
     init(userId: String,
          firstName: String,
@@ -38,7 +40,9 @@ class User {
          dateOfBirth: String?,
          dateProfileCreated: String,
          jobsApplied: [String]?,
-         jobsAccepted: [String]?) {
+         allApplications: [String]?,
+         jobsAccepted: [String]?,
+         jobsCompleted: Int?) {
         
         self.userId = userId
         self.firstName = firstName
@@ -52,7 +56,9 @@ class User {
         self.gender = gender
         self.dateOfBirth = dateOfBirth
         self.dateProfileCreated = dateProfileCreated
+        self.allApplications = allApplications
         self.jobsApplied = jobsApplied
         self.jobsAccepted = jobsAccepted
+        self.jobsCompleted = jobsCompleted
     }
 }

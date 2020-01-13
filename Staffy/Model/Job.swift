@@ -32,6 +32,7 @@ class Job {
     private(set) var companyPhone: String
     private(set) var status: String
     private(set) var applicants: [String]
+    private(set) var accepted: [String]
     
     init(jobId: String,
          companyId: String,
@@ -51,7 +52,8 @@ class Job {
          companyEmail: String,
          companyPhone: String,
          status: String,
-         applicants: [String]) {
+         applicants: [String],
+         accepted: [String]) {
         
         self.jobId = jobId
         self.companyId = companyId
@@ -72,6 +74,7 @@ class Job {
         self.companyPhone = companyPhone
         self.status = status
         self.applicants = applicants
+        self.accepted = accepted
     }
     
     class func parseData(snapshot: QuerySnapshot?) -> [Job] {
@@ -101,8 +104,9 @@ class Job {
             let companyPhone = data["companyPhone"] as? String ?? ""
             let status = data["status"] as? String ?? ""
             let applicants = data["applicants"] as? [String] ?? []
+            let accepted = data["accepted"] as? [String] ?? []
             
-            let newJob = Job(jobId: jobId, companyId: companyId!, title: title, companyName: companyName, jobCompanyName: jobCompanyName, address: address, experince: experience, positions: positions, postedDate: postedDate, startDate: startDate, endDate: endDate, startTime: startTime, endTime: endTime, description: description, pay: pay, companyEmail: companyEmail, companyPhone: companyPhone, status: status, applicants: applicants)
+            let newJob = Job(jobId: jobId, companyId: companyId!, title: title, companyName: companyName, jobCompanyName: jobCompanyName, address: address, experince: experience, positions: positions, postedDate: postedDate, startDate: startDate, endDate: endDate, startTime: startTime, endTime: endTime, description: description, pay: pay, companyEmail: companyEmail, companyPhone: companyPhone, status: status, applicants: applicants, accepted: accepted)
             jobs.append(newJob)
         }
         

@@ -93,30 +93,20 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
             self.profileImage.image = image
         }
         
-        ratingView.rating = currentUser.reviewRating!
-        ratingLabel.text = getRatingText(rating: currentUser.reviewRating!)
+        ratingView.rating = (currentUser.reviewRating! / Double(currentUser.jobsCompleted!))
+        ratingLabel.text = getRatingText(rating: (currentUser.reviewRating! / Double(currentUser.jobsCompleted!)))
         bioLabel.text = currentUser.bio
         
     }
     
     func getRatingText(rating: Double) -> String {
     
-        switch rating {
-        
-        case 0:
-            return "\(Constants.Profile.no_rating)"
-        case 1:
-            return "1 \(Constants.Profile.rating)"
-        case 2:
-            return "2 \(Constants.Profile.rating)"
-        case 3:
-            return "3 \(Constants.Profile.rating)"
-        case 4:
-            return "4 \(Constants.Profile.rating)"
-        case 5:
-            return "5 \(Constants.Profile.rating)"
-        default:
-            return "\(Constants.Profile.ratingError)"
+        if rating == 0.0 {
+            
+            return "No reviews yet"
+        } else {
+            
+            return String(format: "%.1f of 5 Star Rating", rating)
         }
     }
     
@@ -160,13 +150,13 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
                         ref.updateData(["avatarURL": avatarURL.absoluteString], completion: { (error) in
                             
                             self.profileImage.image = images[0]
-                            imagePicker.dismiss(animated: true)
                         })
                     }
                 }
             }
         }
-
+        
+        imagePicker.dismiss(animated: true)
     }
     
     func cancelButtonDidPress(_ imagePicker: ImagePickerController) {

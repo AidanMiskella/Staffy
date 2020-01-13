@@ -10,26 +10,29 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseFirestore
-import FoldingCell
+
+enum StatusCategory: String {
+    
+    case applied = "APPLIED"
+    case accepted = "ACCEPTED"
+    case in_progress = "IN-PROGRESS"
+    case closed = "CLOSED"
+}
 
 class MyJobsViewController: UIViewController {
-    
-    enum Const {
-        
-        static let closeCellHeight: CGFloat = 150
-        static let openCellHeight: CGFloat = 600
-        static let rowsCount = 10
-    }
-    
-    var cellHeights: [CGFloat] = []
-    
+
     private var jobs = [Job]()
     private var jobs_ref: CollectionReference!
     private var jobsListener: ListenerRegistration!
     
     private var currentJob: Job?
+    private var selectedJob: Job?
     
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet private weak var segmentControl: UISegmentedControl!
+    
+    private var selectedCategory = StatusCategory.applied.rawValue
     
     private var loginHandle: AuthStateDidChangeListenerHandle?
     
@@ -38,6 +41,10 @@ class MyJobsViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         setup()
+        getJobCount()
+        segmentControl.tintColor = .lightBlue
+        segmentControl.addUnderlineForSelectedSegment()
+        segmentControl.setFontSize(10)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -77,94 +84,182 @@ class MyJobsViewController: UIViewController {
     
     private func setup() {
         
-        cellHeights = Array(repeating: Const.closeCellHeight, count: Const.rowsCount)
-        tableView.estimatedRowHeight = Const.closeCellHeight
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.backgroundColor = UIColor(displayP3Red: 54/255, green: 76/255, blue: 112/255, alpha: 0.1)
-        
         Utilities.setupNavigationStyle(navigationController!)
+    }
+    
+    func getJobCount() {
+        
+        guard let currentUserId = Auth.auth().currentUser?.uid else { return }
+        
+        let appliedArray = Firestore.firestore().collection(Constants.FirebaseDB.jobs_ref)
+            .whereField(Constants.FirebaseDB.applicants, arrayContains: currentUserId)
+            .whereField(Constants.FirebaseDB.status, isEqualTo: "open")
+        appliedArray.getDocuments { (snapshot, error) in
+            
+            self.segmentControl.setTitle("APPLIED (\(snapshot!.count))", forSegmentAt: 0)
+        }
+        
+        let acceptedArray = Firestore.firestore().collection(Constants.FirebaseDB.jobs_ref)
+            .whereField(Constants.FirebaseDB.accepted, arrayContains: currentUserId)
+            .whereField(Constants.FirebaseDB.status, isEqualTo: "open")
+        acceptedArray.getDocuments { (snapshot, error) in
+            
+            self.segmentControl.setTitle("ACCEPTED (\(snapshot!.count))", forSegmentAt: 1)
+        }
+        
+        let inprogressArray = Firestore.firestore().collection(Constants.FirebaseDB.jobs_ref)
+            .whereField(Constants.FirebaseDB.accepted, arrayContains: currentUserId)
+            .whereField(Constants.FirebaseDB.status, isEqualTo: "inProgress")
+        inprogressArray.getDocuments { (snapshot, error) in
+            
+            self.segmentControl.setTitle("IN-PROGRESS (\(snapshot!.count))", forSegmentAt: 2)
+        }
+        
+        let closedArray = Firestore.firestore().collection(Constants.FirebaseDB.jobs_ref)
+            .whereField(Constants.FirebaseDB.accepted, arrayContains: currentUserId)
+            .whereField(Constants.FirebaseDB.status, isEqualTo: "closed")
+        closedArray.getDocuments { (snapshot, error) in
+            
+            self.segmentControl.setTitle("CLOSED (\(snapshot!.count))", forSegmentAt: 3)
+        }
+    }
+    
+    @IBAction func categoryChanged(_ sender: Any) {
+        
+        segmentControl.changeUnderlinePosition()
+        
+        if segmentControl.selectedSegmentIndex == 0 {
+            
+            selectedCategory = StatusCategory.applied.rawValue
+        } else if segmentControl.selectedSegmentIndex == 1 {
+            
+            selectedCategory = StatusCategory.accepted.rawValue
+        } else if segmentControl.selectedSegmentIndex == 2 {
+            
+            selectedCategory = StatusCategory.in_progress.rawValue
+        } else {
+            
+            selectedCategory = StatusCategory.closed.rawValue
+        }
+        
+        jobsListener.remove()
+        setListener()
     }
     
     func setListener() {
         
-        jobsListener = jobs_ref
-            .whereField(Constants.FirebaseDB.applicants, arrayContains: Auth.auth().currentUser!.uid)
-            .order(by: Constants.FirebaseDB.posted_date, descending: true)
-            .addSnapshotListener { (snapshot, error) in
-                if let error = error {
+        guard let currentUserId = Auth.auth().currentUser?.uid else { return }
+        
+        if selectedCategory == StatusCategory.applied.rawValue {
+            
+            jobsListener = jobs_ref
+                .whereField(Constants.FirebaseDB.applicants, arrayContains: currentUserId)
+                .whereField(Constants.FirebaseDB.status, isEqualTo: "open")
+                .order(by: Constants.FirebaseDB.posted_date, descending: true)
+                .addSnapshotListener({ (snapshot, error) in
                     
-                    debugPrint("Error fetching docs: \(error)")
-                } else {
+                    if let error = error {
+                        
+                        debugPrint("Error fetching docs: \(error)")
+                    } else {
+                        
+                        self.jobs.removeAll()
+                        self.jobs = Job.parseData(snapshot: snapshot)
+                        self.getJobCount()
+                        self.tableView.reloadData()
+                    }
+                })
+        } else if selectedCategory == StatusCategory.accepted.rawValue {
+            
+            jobsListener = jobs_ref
+                .whereField(Constants.FirebaseDB.accepted, arrayContains: currentUserId)
+                .whereField(Constants.FirebaseDB.status, isEqualTo: "open")
+                .order(by: Constants.FirebaseDB.posted_date, descending: true)
+                .addSnapshotListener({ (snapshot, error) in
                     
-                    self.jobs.removeAll()
-                    self.jobs = Job.parseData(snapshot: snapshot)
-                    self.tableView.reloadData()
-                }
+                    if let error = error {
+                        
+                        debugPrint("Error fetching docs: \(error)")
+                    } else {
+                        
+                        self.jobs.removeAll()
+                        self.jobs = Job.parseData(snapshot: snapshot)
+                        self.getJobCount()
+                        self.tableView.reloadData()
+                    }
+                })
+        } else if selectedCategory == StatusCategory.in_progress.rawValue {
+            
+            jobsListener = jobs_ref
+                .whereField(Constants.FirebaseDB.accepted, arrayContains: currentUserId)
+                .whereField(Constants.FirebaseDB.status, isEqualTo: "inProgress")
+                .order(by: Constants.FirebaseDB.posted_date, descending: true)
+                .addSnapshotListener({ (snapshot, error) in
+                    
+                    if let error = error {
+                        
+                        debugPrint("Error fetching docs: \(error)")
+                    } else {
+                        
+                        self.jobs.removeAll()
+                        self.jobs = Job.parseData(snapshot: snapshot)
+                        self.getJobCount()
+                        self.tableView.reloadData()
+                    }
+                })
+        } else {
+            
+            jobsListener = jobs_ref
+                .whereField(Constants.FirebaseDB.accepted, arrayContains: currentUserId)
+                .whereField(Constants.FirebaseDB.status, isEqualTo: "closed")
+                .order(by: Constants.FirebaseDB.posted_date, descending: true)
+                .addSnapshotListener({ (snapshot, error) in
+                    
+                    if let error = error {
+                        
+                        debugPrint("Error fetching docs: \(error)")
+                    } else {
+                        
+                        self.jobs.removeAll()
+                        self.jobs = Job.parseData(snapshot: snapshot)
+                        self.getJobCount()
+                        self.tableView.reloadData()
+                    }
+                })
         }
     }
 }
 
 extension MyJobsViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return jobs.count
     }
     
-    func tableView(_: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard case let cell as DemoCell = cell else {
-            return
-        }
-        
-        cell.backgroundColor = .clear
-        
-        if cellHeights[indexPath.row] == Const.closeCellHeight {
-            cell.unfold(false, animated: false, completion: nil)
-        } else {
-            cell.unfold(true, animated: false, completion: nil)
-        }
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FoldingCell", for: indexPath) as! DemoCell
-        let durations: [TimeInterval] = [0.26, 0.2, 0.2]
-        cell.durationsForExpandedState = durations
-        cell.durationsForCollapsedState = durations
-        cell.configureCell(job: jobs[indexPath.row])
+        
+        let job = jobs[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "JobCell") as! JobTableViewCell
+        
+        cell.setCell(job: job)
+        
         return cell
-    }
-    
-    func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return cellHeights[indexPath.row]
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let cell = tableView.cellForRow(at: indexPath) as! FoldingCell
+        selectedJob = jobs[indexPath.row]
+        performSegue(withIdentifier: "goToJobDetails", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if cell.isAnimating() {
-            return
-        }
-        
-        var duration = 0.0
-        let cellIsCollapsed = cellHeights[indexPath.row] == Const.closeCellHeight
-        if cellIsCollapsed {
-            cellHeights[indexPath.row] = Const.openCellHeight
-            cell.unfold(true, animated: true, completion: nil)
-            duration = 0.5
-        } else {
-            cellHeights[indexPath.row] = Const.closeCellHeight
-            cell.unfold(false, animated: true, completion: nil)
-            duration = 0.8
-        }
-        
-        UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: { () -> Void in
-            tableView.beginUpdates()
-            tableView.endUpdates()
+        if segue.identifier == "goToJobDetails" {
             
-            if cell.frame.maxY > tableView.frame.maxY {
-                tableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.bottom, animated: true)
-            }
-        }, completion: nil)
+            let vc = segue.destination as! JobViewController
+            vc.job = selectedJob
+        }
     }
 }
 

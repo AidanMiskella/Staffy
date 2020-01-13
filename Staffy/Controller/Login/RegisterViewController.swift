@@ -100,8 +100,10 @@ class RegisterViewController: UIViewController {
             Constants.FirebaseDB.mobile: Constants.Profile.notSet,
             Constants.FirebaseDB.address: Constants.Profile.notSet,
             Constants.FirebaseDB.gender: Constants.Profile.notSet,
+            Constants.FirebaseDB.all_applicants: [],
             Constants.FirebaseDB.jobs_applied: [],
             Constants.FirebaseDB.jobs_accepted: [],
+            Constants.FirebaseDB.jobs_completed: 0,
             Constants.FirebaseDB.documents: [],
             Constants.FirebaseDB.dob: Constants.Profile.notSet,
             Constants.FirebaseDB.date_created: Utilities.dateFormatterFullMonth(Date())
