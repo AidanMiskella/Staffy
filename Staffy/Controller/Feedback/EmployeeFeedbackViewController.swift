@@ -58,8 +58,8 @@ class EmployeeFeedbackViewController: UIViewController {
             
             starRating.isUserInteractionEnabled = false
             commentsTextView.isEditable = false
-            starRating.rating = currentReport.employeeStarRating
-            commentsTextView.text = currentReport.employeeComment
+            starRating.rating = currentReport.employerStarRating
+            commentsTextView.text = currentReport.employerComment
             navigationItem.rightBarButtonItem = nil
         }
     }
@@ -76,8 +76,8 @@ class EmployeeFeedbackViewController: UIViewController {
             batch.updateData([Constants.FirebaseDB.reviewRating: self.starRating.rating + company!.reviewRating!,
                               Constants.FirebaseDB.jobs_completed: company!.jobsCompleted + 1], forDocument: company_ref)
             
-            batch.updateData([Constants.FirebaseDB.employee_star_rating: self.starRating.rating,
-                              Constants.FirebaseDB.employee_comment: self.commentsTextView.text!,
+            batch.updateData([Constants.FirebaseDB.employer_star_rating: self.starRating.rating,
+                              Constants.FirebaseDB.employer_comment: self.commentsTextView.text!,
                               Constants.FirebaseDB.report_open: false], forDocument: report_ref)
             
             batch.commit() { err in

@@ -16,6 +16,14 @@ import FirebaseAuth
 
 class EmployerFeedbackViewController: UIViewController, SignaturePadDelegate {
     
+    @IBOutlet weak var signatureEmployerName: UITextField!
+    
+    @IBOutlet weak var signatureEmployerNameImage: UIImageView!
+    
+    @IBOutlet weak var signatureEmployerPosition: UITextField!
+    
+    @IBOutlet weak var signatureEmployerPositionImage: UIImageView!
+    
     @IBOutlet weak var signaturePadView: SignaturePad!
     
     @IBOutlet weak var clearSignature: UIButton!
@@ -36,11 +44,18 @@ class EmployerFeedbackViewController: UIViewController, SignaturePadDelegate {
     func setupElements() {
         
         Utilities.styleFilledButton(button: clearSignature, font: .largeLoginButton, fontColor: .white, backgroundColor: .lightBlue, cornerRadius: 10.0)
+        Utilities.styleTextField(textfield: signatureEmployerName, font: .editProfileText, fontColor: .black, padding: 40.0)
+        Utilities.styleTextField(textfield: signatureEmployerPosition, font: .editProfileText, fontColor: .black, padding: 40.0)
+        Utilities.styleImage(imageView: signatureEmployerNameImage, image: "userSmall", imageColor: .lightGray)
+        Utilities.styleImage(imageView: signatureEmployerPositionImage, image: "userSmall", imageColor: .lightGray)
     }
     
     func connectOutlets() {
         
         guard let signature = currentReport.signatureURL else { return }
+        
+        signatureEmployerName.text = currentReport.signatureEmployerName
+        signatureEmployerPosition.text = currentReport.signatureEmployerPosition
         
         ImageService.downloadImage(withURL: signature) { (image) in
             
@@ -51,6 +66,8 @@ class EmployerFeedbackViewController: UIViewController, SignaturePadDelegate {
             
             signaturePadView.isUserInteractionEnabled = false
             clearSignature.isEnabled = false
+            signatureEmployerName.isEnabled = false
+            signatureEmployerPosition.isEnabled = false
         }
     }
     
@@ -71,10 +88,26 @@ class EmployerFeedbackViewController: UIViewController, SignaturePadDelegate {
     
     @IBAction func nextButtonPressed(_ sender: Any) {
         
-        if signaturePadView.isSigned {
+        if signaturePadView.isSigned && (signatureEmployerName.text != "" && signatureEmployerPosition.text != "") {
             
             let report_ref =  Firestore.firestore().collection(Constants.FirebaseDB.jobs_ref).document(self.job!.jobId).collection(Constants.FirebaseDB.reports_ref).document(self.currentReport.reportId)
             let storageRef = Storage.storage().reference().child("signatures").child(job.jobId).child(UserService.currentUser!.userId)
+            
+            let batch = Firestore.firestore().batch()
+            
+            batch.updateData([Constants.FirebaseDB.signature_employer_name: signatureEmployerName.text!,
+                              Constants.FirebaseDB.signature_employer_position: signatureEmployerPosition.text!],
+                             forDocument: report_ref)
+            
+            batch.commit() { err in
+                
+                if let err = err {
+                    
+                    print("Error writing batch \(err)")
+                } else {
+                    
+                }
+            }
             
             if let uploadData = signaturePadView.getSignature()!.pngData() {
                 

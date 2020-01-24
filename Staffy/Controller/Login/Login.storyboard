@@ -29,7 +29,7 @@
         <!--Register-->
         <scene sceneID="8jE-Nq-9M1">
             <objects>
-                <viewController title="Register" id="Ugg-pC-mzW" customClass="RegisterViewController" customModule="StaffyAdmin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Register" id="Ugg-pC-mzW" customClass="RegisterViewController" customModule="Staffy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7Zq-Ma-Rdn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -106,6 +106,13 @@
                                     <constraint firstAttribute="height" constant="20" id="ok0-CA-hTK"/>
                                 </constraints>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Staffy" translatesAutoresizingMaskIntoConstraints="NO" id="ICx-lk-k3D">
+                                <rect key="frame" x="57" y="128" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="F70-8Z-cRn"/>
+                                    <constraint firstAttribute="height" constant="300" id="tE2-Rp-qf1"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -113,6 +120,7 @@
                             <constraint firstItem="3tN-qJ-2cg" firstAttribute="trailing" secondItem="ATy-bg-cWg" secondAttribute="trailing" id="4z1-4D-0Uq"/>
                             <constraint firstItem="E9t-Tm-4bL" firstAttribute="top" secondItem="ddE-KQ-6Ao" secondAttribute="bottom" constant="5" id="5No-HQ-mLl"/>
                             <constraint firstItem="ddE-KQ-6Ao" firstAttribute="top" secondItem="kRg-tv-fJg" secondAttribute="bottom" constant="15" id="AS9-jp-0Pt"/>
+                            <constraint firstItem="ICx-lk-k3D" firstAttribute="centerX" secondItem="7Zq-Ma-Rdn" secondAttribute="centerX" id="Ar6-kD-OFK"/>
                             <constraint firstItem="twH-nx-ao8" firstAttribute="trailing" secondItem="y2E-zR-b7u" secondAttribute="trailing" constant="40" id="BrF-ZQ-Nmx"/>
                             <constraint firstItem="E9t-Tm-4bL" firstAttribute="leading" secondItem="twH-nx-ao8" secondAttribute="leading" constant="40" id="FXa-Yw-dQN"/>
                             <constraint firstItem="3tN-qJ-2cg" firstAttribute="trailing" secondItem="3tg-CG-aNW" secondAttribute="trailing" id="H4P-Vr-UXJ"/>
@@ -121,6 +129,7 @@
                             <constraint firstItem="3tN-qJ-2cg" firstAttribute="leading" secondItem="6LP-q5-YGd" secondAttribute="leading" id="JtO-aE-HJg"/>
                             <constraint firstItem="y2E-zR-b7u" firstAttribute="leading" secondItem="twH-nx-ao8" secondAttribute="leading" constant="40" id="LTN-Cr-sYW"/>
                             <constraint firstItem="3tN-qJ-2cg" firstAttribute="centerY" secondItem="ddE-KQ-6Ao" secondAttribute="centerY" id="MFb-tl-uUA"/>
+                            <constraint firstItem="ICx-lk-k3D" firstAttribute="top" secondItem="twH-nx-ao8" secondAttribute="top" constant="40" id="NWZ-w0-fef"/>
                             <constraint firstItem="ddE-KQ-6Ao" firstAttribute="leading" secondItem="twH-nx-ao8" secondAttribute="leading" constant="40" id="R22-Yd-rwT"/>
                             <constraint firstItem="3tN-qJ-2cg" firstAttribute="trailing" secondItem="6LP-q5-YGd" secondAttribute="trailing" id="S5E-CQ-l0z"/>
                             <constraint firstItem="3tN-qJ-2cg" firstAttribute="leading" secondItem="twH-nx-ao8" secondAttribute="leading" constant="46" id="YVq-CF-gwa"/>
@@ -161,7 +170,7 @@
         <!--Forgot Password-->
         <scene sceneID="X9S-Kv-k5a">
             <objects>
-                <viewController title="Forgot Password" id="MZl-To-ixx" customClass="ResetPasswordViewController" customModule="StaffyAdmin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Forgot Password" id="MZl-To-ixx" customClass="ResetPasswordViewController" customModule="Staffy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ygv-Ts-Bed">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -195,15 +204,24 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="envelope" translatesAutoresizingMaskIntoConstraints="NO" id="R5C-YT-42c">
                                 <rect key="frame" x="50" y="522" width="20" height="100"/>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Staffy" translatesAutoresizingMaskIntoConstraints="NO" id="9WB-kE-GS3">
+                                <rect key="frame" x="57" y="128" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="ATc-Ra-CYn"/>
+                                    <constraint firstAttribute="height" constant="300" id="aQ8-Si-kCP"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="9WB-kE-GS3" firstAttribute="top" secondItem="YUe-N4-cP3" secondAttribute="top" constant="40" id="0MY-PK-TLN"/>
                             <constraint firstItem="Ahk-vl-HHF" firstAttribute="leading" secondItem="YUe-N4-cP3" secondAttribute="leading" constant="40" id="Asd-4f-YxB"/>
                             <constraint firstItem="HfF-5N-KkS" firstAttribute="top" secondItem="Ahk-vl-HHF" secondAttribute="bottom" constant="210" id="JSb-RG-mnV"/>
                             <constraint firstItem="YUe-N4-cP3" firstAttribute="bottom" secondItem="HfF-5N-KkS" secondAttribute="bottom" constant="15" id="MKw-96-iAk"/>
                             <constraint firstItem="YUe-N4-cP3" firstAttribute="trailing" secondItem="4Uc-oz-nLo" secondAttribute="trailing" constant="40" id="NJP-bO-OI9"/>
                             <constraint firstItem="4Uc-oz-nLo" firstAttribute="leading" secondItem="YUe-N4-cP3" secondAttribute="leading" constant="40" id="NNv-2Z-slJ"/>
                             <constraint firstItem="4Uc-oz-nLo" firstAttribute="top" secondItem="Ahk-vl-HHF" secondAttribute="bottom" constant="8" id="Riz-Rs-CeK"/>
+                            <constraint firstItem="9WB-kE-GS3" firstAttribute="centerX" secondItem="Ygv-Ts-Bed" secondAttribute="centerX" id="T0f-ZL-bQM"/>
                             <constraint firstItem="HfF-5N-KkS" firstAttribute="leading" secondItem="YUe-N4-cP3" secondAttribute="leading" constant="40" id="UYB-su-UHN"/>
                             <constraint firstItem="R5C-YT-42c" firstAttribute="leading" secondItem="YUe-N4-cP3" secondAttribute="leading" constant="50" id="W8J-4X-Wvm"/>
                             <constraint firstItem="YUe-N4-cP3" firstAttribute="trailing" secondItem="HfF-5N-KkS" secondAttribute="trailing" constant="40" id="ZoZ-fc-20L"/>
@@ -227,7 +245,7 @@
         <!--Login-->
         <scene sceneID="D3T-9c-W9z">
             <objects>
-                <viewController storyboardIdentifier="loginVC" id="RGk-IW-8AQ" customClass="LoginViewController" customModule="StaffyAdmin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginVC" id="RGk-IW-8AQ" customClass="LoginViewController" customModule="Staffy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="E9R-KN-iwO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -307,12 +325,20 @@
                                     <constraint firstAttribute="width" constant="20" id="fcl-qT-rkd"/>
                                 </constraints>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Staffy" translatesAutoresizingMaskIntoConstraints="NO" id="YP5-Mg-hRr">
+                                <rect key="frame" x="57" y="128" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="5Sb-Nj-FxJ"/>
+                                    <constraint firstAttribute="height" constant="300" id="Vb2-Ai-yoQ"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="yQ3-Xs-S0s" secondAttribute="trailing" constant="40" id="0dz-vC-hzU"/>
                             <constraint firstItem="2Va-qz-TOW" firstAttribute="leading" secondItem="Cyd-Nu-EQ3" secondAttribute="leading" constant="40" id="2o1-W4-uUC"/>
                             <constraint firstItem="yQ3-Xs-S0s" firstAttribute="leading" secondItem="Cyd-Nu-EQ3" secondAttribute="leading" constant="40" id="8ch-DO-o7I"/>
+                            <constraint firstItem="YP5-Mg-hRr" firstAttribute="top" secondItem="Cyd-Nu-EQ3" secondAttribute="top" constant="40" id="AhW-nP-DfJ"/>
                             <constraint firstItem="CUm-pF-dWf" firstAttribute="centerY" secondItem="8Ip-Og-wUr" secondAttribute="centerY" id="Ekj-Ub-fJz"/>
                             <constraint firstItem="8Ip-Og-wUr" firstAttribute="top" secondItem="0lo-Vc-bb5" secondAttribute="bottom" constant="15" id="FQW-2d-t5c"/>
                             <constraint firstItem="Cyd-Nu-EQ3" firstAttribute="bottom" secondItem="2Va-qz-TOW" secondAttribute="bottom" constant="20" id="M5d-ff-aEY"/>
@@ -325,6 +351,7 @@
                             <constraint firstItem="vEE-Dh-Cnh" firstAttribute="leading" secondItem="Cyd-Nu-EQ3" secondAttribute="leading" constant="40" id="dov-yX-rTn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Kco-Tl-jux" secondAttribute="trailing" constant="20" id="ejX-Vo-viu"/>
                             <constraint firstItem="vEE-Dh-Cnh" firstAttribute="top" secondItem="Kco-Tl-jux" secondAttribute="bottom" constant="5" id="iL6-S3-DUM"/>
+                            <constraint firstItem="YP5-Mg-hRr" firstAttribute="centerX" secondItem="E9R-KN-iwO" secondAttribute="centerX" id="ivR-Xo-ExE"/>
                             <constraint firstItem="RYP-sQ-8mv" firstAttribute="leading" secondItem="Cyd-Nu-EQ3" secondAttribute="leading" constant="50" id="lO0-Xs-eiV"/>
                             <constraint firstItem="8Ip-Og-wUr" firstAttribute="leading" secondItem="Cyd-Nu-EQ3" secondAttribute="leading" constant="40" id="lQz-Jz-LPb"/>
                             <constraint firstItem="RYP-sQ-8mv" firstAttribute="centerY" secondItem="0lo-Vc-bb5" secondAttribute="centerY" id="ojw-qU-7Cy"/>
@@ -352,6 +379,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Staffy" width="250" height="250"/>
         <image name="envelope" width="100" height="100"/>
         <image name="lock" width="75" height="75"/>
         <image name="user" width="75" height="75"/>

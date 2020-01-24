@@ -31,6 +31,7 @@ class UserService {
                 if let data = snapshot?.data() {
                     
                     if let firstName = data[Constants.FirebaseDB.first_name] as? String,
+                    let email = data[Constants.FirebaseDB.email] as? String,
                     let lastName = data[Constants.FirebaseDB.last_name] as? String,
                     let avatarURL = data[Constants.FirebaseDB.avatar_url] as? String,
                     let bio = data[Constants.FirebaseDB.bio] as? String,
@@ -47,7 +48,7 @@ class UserService {
                     let jobsCompleted = data[Constants.FirebaseDB.jobs_completed] as? Int,
                     let url = URL(string: avatarURL) {
                         
-                        user = User(userId: userId, firstName: firstName, lastName: lastName, avatarURL: url, bio: bio, reviewRating: reviewRating, mobile: mobile, documents: documents, address: address, gender: gender, dateOfBirth: dateOfBirth, dateProfileCreated: dateProfileCreated, jobsApplied: jobsApplied, allApplications: allApplications, jobsAccepted: jobsAccepted, jobsCompleted: jobsCompleted)
+                        user = User(userId: userId, email: email, firstName: firstName, lastName: lastName, avatarURL: url, bio: bio, reviewRating: reviewRating, mobile: mobile, documents: documents, address: address, gender: gender, dateOfBirth: dateOfBirth, dateProfileCreated: dateProfileCreated, jobsApplied: jobsApplied, allApplications: allApplications, jobsAccepted: jobsAccepted, jobsCompleted: jobsCompleted)
                     }
                     
                     completion(user)

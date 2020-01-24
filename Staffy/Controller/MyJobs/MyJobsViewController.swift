@@ -29,6 +29,10 @@ class MyJobsViewController: UIViewController {
     private var selectedJob: Job?
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    var filteredJobs: [Job] = []
+    var searchActive : Bool = false
     
     @IBOutlet private weak var segmentControl: UISegmentedControl!
     
@@ -48,6 +52,8 @@ class MyJobsViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        searchBar.delegate = self
+        searchBar.tintColor = .lightBlue
         
         jobs_ref = Firestore.firestore().collection(Constants.FirebaseDB.jobs_ref)
     }
@@ -125,6 +131,10 @@ class MyJobsViewController: UIViewController {
     }
     
     @IBAction func categoryChanged(_ sender: Any) {
+        
+        searchBar.text = ""
+        searchBar.endEditing(true)
+        searchActive = false
         
         segmentControl.changeUnderlinePosition()
         
@@ -234,12 +244,22 @@ extension MyJobsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+        if(searchActive) {
+            return filteredJobs.count
+        }
         return jobs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let job = jobs[indexPath.row]
+        var job: Job
+        
+        if(searchActive) {
+            job = filteredJobs[indexPath.row]
+        } else {
+            job = jobs[indexPath.row]
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "JobCell") as! JobTableViewCell
         
         cell.setCell(job: job)
@@ -262,4 +282,47 @@ extension MyJobsViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
+
+extension MyJobsViewController: UISearchBarDelegate {
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        
+        searchActive = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        
+        searchActive = false
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchBar.text = ""
+        searchBar.endEditing(true)
+        searchActive = false
+        tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchActive = false
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        filteredJobs = jobs.filter({$0.title.lowercased().contains(searchText.lowercased()) ||
+            $0.address.lowercased().contains(searchText.lowercased())
+        })
+        
+        if(filteredJobs.count == 0){
+            searchActive = false
+            tableView.endEditing(true)
+        } else {
+            searchActive = true
+        }
+        self.tableView.reloadData()
+    }
+}
+
+
 

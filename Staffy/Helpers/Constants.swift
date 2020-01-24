@@ -86,6 +86,8 @@ struct Constants {
         static let signature_url = "signatureURL"
         static let employee_star_rating = "employeeStarRating"
         static let employee_comment = "employeeComment"
+        static let signature_employer_name = "signatureEmployerName"
+        static let signature_employer_position = "signatureEmployerPosition"
         static let report_open = "reportOpen"
     }
     

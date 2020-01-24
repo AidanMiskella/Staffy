@@ -27,7 +27,7 @@ class Job {
     private(set) var startTime: String
     private(set) var endTime: String
     private(set) var description: String
-    private(set) var pay: Float
+    private(set) var pay: Double
     private(set) var companyEmail: String
     private(set) var companyPhone: String
     private(set) var status: String
@@ -48,7 +48,7 @@ class Job {
          startTime: String,
          endTime: String,
          description: String,
-         pay: Float,
+         pay: Double,
          companyEmail: String,
          companyPhone: String,
          status: String,
@@ -99,7 +99,7 @@ class Job {
             let startTime = data["startTime"] as? String ?? ""
             let endTime = data["endTime"] as? String ?? ""
             let description = data["description"] as? String ?? ""
-            let pay = data["pay"] as? Float ?? 0.00
+            let pay = data["pay"] as? Double ?? 0.0
             let companyEmail = data["companyEmail"] as? String ?? ""
             let companyPhone = data["companyPhone"] as? String ?? ""
             let status = data["status"] as? String ?? ""

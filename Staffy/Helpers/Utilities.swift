@@ -19,12 +19,6 @@ class Utilities {
         textView.textColor = fontColor
         
         textView.layer.backgroundColor = UIColor.white.cgColor
-        
-        textView.layer.masksToBounds = false
-        textView.layer.shadowColor = UIColor.lightGray.cgColor
-        textView.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-        textView.layer.shadowOpacity = 1.0
-        textView.layer.shadowRadius = 0.0
     }
     
     static func styleLabel(label: UILabel, font: UIFont, fontColor: UIColor) {

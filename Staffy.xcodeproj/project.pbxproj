@@ -56,6 +56,7 @@
 		74B23E8622F8ADA50058B5D4 /* MyJobs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74B23E8522F8ADA50058B5D4 /* MyJobs.storyboard */; };
 		74B23E8822F8ADDB0058B5D4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B23E8722F8ADDB0058B5D4 /* ProfileViewController.swift */; };
 		74B23E8A22F8ADEA0058B5D4 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74B23E8922F8ADEA0058B5D4 /* Profile.storyboard */; };
+		74B8853823D668DA001E8F4E /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B8853723D668DA001E8F4E /* CardView.swift */; };
 		74D05065237AF5BA00F6B7CB /* SegmentControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D05064237AF5BA00F6B7CB /* SegmentControllerExtension.swift */; };
 		74E730FE23C504DA00976E31 /* EmployerFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E730FD23C504DA00976E31 /* EmployerFeedbackViewController.swift */; };
 		74E7310023C504EA00976E31 /* EmployeeFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E730FF23C504EA00976E31 /* EmployeeFeedbackViewController.swift */; };
@@ -118,6 +119,7 @@
 		74B23E8522F8ADA50058B5D4 /* MyJobs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyJobs.storyboard; sourceTree = "<group>"; };
 		74B23E8722F8ADDB0058B5D4 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		74B23E8922F8ADEA0058B5D4 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		74B8853723D668DA001E8F4E /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		74D05064237AF5BA00F6B7CB /* SegmentControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControllerExtension.swift; sourceTree = "<group>"; };
 		74E730FD23C504DA00976E31 /* EmployerFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployerFeedbackViewController.swift; sourceTree = "<group>"; };
 		74E730FF23C504EA00976E31 /* EmployeeFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeFeedbackViewController.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				7403CFC722F8A15100C6C8D1 /* ErrorExtension.swift */,
 				7402D1172337AD2E001E0573 /* UIViewExtension.swift */,
 				74D05064237AF5BA00F6B7CB /* SegmentControllerExtension.swift */,
+				74B8853723D668DA001E8F4E /* CardView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				740301A3233CB37E0040FAF5 /* GenderEditViewController.swift in Sources */,
 				74B23E8822F8ADDB0058B5D4 /* ProfileViewController.swift in Sources */,
 				74016E752361B33300D38E41 /* Job.swift in Sources */,
+				74B8853823D668DA001E8F4E /* CardView.swift in Sources */,
 				74E7310023C504EA00976E31 /* EmployeeFeedbackViewController.swift in Sources */,
 				7400A20B2334336D00D4E9FE /* UserServices.swift in Sources */,
 				74718BEB23687FC6009A64F3 /* Company.swift in Sources */,

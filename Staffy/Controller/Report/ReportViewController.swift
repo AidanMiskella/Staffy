@@ -18,6 +18,10 @@ class ReportViewController: UIViewController {
     
     @IBOutlet weak var nameLabel: UILabel!
     
+    @IBOutlet weak var userEmailLabel: UILabel!
+    
+    @IBOutlet weak var userPhoneLabel: UILabel!
+        
     @IBOutlet weak var statusImageView: UIImageView!
     
     @IBOutlet weak var statusLabel: UILabel!
@@ -31,8 +35,6 @@ class ReportViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private var timer = Timer()
-    var clockedIn = false
-    var onBreak = false
     
     var job: Job!
     
@@ -90,9 +92,9 @@ class ReportViewController: UIViewController {
     
     func setupElements() {
         
-        Utilities.styleLabel(label: nameLabel, font: .largeTitle, fontColor: .black)
         Utilities.styleLabel(label: currentTime, font: .largeTime, fontColor: .black)
-        Utilities.styleLabel(label: statusLabel, font: .largeTitle, fontColor: .black)
+        Utilities.styleLabel(label: statusLabel, font: .reportClockingStatus, fontColor: .black)
+        Utilities.styleLabel(label: nameLabel, font: .reportNameTitle, fontColor: .black)
         Utilities.styleFilledButton(button: clockingButton, font: .largeLoginButton, fontColor: .white, backgroundColor: .lightBlue, cornerRadius: 10.0)
         Utilities.styleFilledButton(button: breakButton, font: .largeLoginButton, fontColor: .white, backgroundColor: .lightBlue, cornerRadius: 10.0)
     }
@@ -105,15 +107,21 @@ class ReportViewController: UIViewController {
         avatarImageView.layer.cornerRadius = avatarImageView.frame.height / 2
         avatarImageView.clipsToBounds = true
         
+        statusImageView.layer.borderWidth = 1
+        statusImageView.layer.masksToBounds = false
+        statusImageView.layer.borderColor = UIColor.gray.cgColor
+        statusImageView.layer.cornerRadius = statusImageView.frame.height / 2
+        statusImageView.clipsToBounds = true
+        
         UserService.observeUserProfile(UserService.currentUser!.userId, completion: { (user) in
+            
+            self.nameLabel.text = "\(user!.firstName) \(user!.lastName)"
             
             ImageService.getImage(withURL: user!.avatarURL!) { (image) in
                 
                 self.avatarImageView.image = image
             }
         })
-        
-        nameLabel.text = "\(UserService.currentUser!.firstName) \( UserService.currentUser!.lastName)"
     }
     
     func setListener() {
@@ -241,31 +249,26 @@ class ReportViewController: UIViewController {
         let formatter = DateFormatter()
         let formatter2 = DateFormatter()
         formatter.dateFormat = "HH:mm:ss"
-        formatter2.dateFormat = "dd MMMM"
+        formatter2.dateFormat = "dd MMMM YYYY"
         
         let batch = Firestore.firestore().batch()
         
         let report_ref = Firestore.firestore().collection(Constants.FirebaseDB.jobs_ref).document(job!.jobId).collection(Constants.FirebaseDB.reports_ref).document(currentReport.reportId)
         
-        if clockedIn == false {
-            
-            clockedIn.toggle()
+        if currentReport.reportStatus == "Clocked out" || currentReport.reportStatus == "Not clocked in" {
             
             batch.updateData([
                 Constants.FirebaseDB.clocking_messages: FieldValue.arrayUnion(["Clocked in at \(formatter.string(from: Date())) on the \(formatter2.string(from: Date()))"]), Constants.FirebaseDB.report_status: Constants.Report.clockedIn
                 ], forDocument: report_ref)
             
-            clockingButtonTitle()
         } else {
-            
-            clockedIn.toggle()
             
             batch.updateData([
                 Constants.FirebaseDB.clocking_messages: FieldValue.arrayUnion(["Clocked out at \(formatter.string(from: Date())) on the \(formatter2.string(from: Date()))"]), Constants.FirebaseDB.report_status: Constants.Report.clockedOut
                 ], forDocument: report_ref)
-            
-            clockingButtonTitle()
         }
+        
+        clockingButtonTitle()
     
         batch.commit() { err in
             
@@ -284,31 +287,26 @@ class ReportViewController: UIViewController {
         let formatter = DateFormatter()
         let formatter2 = DateFormatter()
         formatter.dateFormat = "HH:mm:ss"
-        formatter2.dateFormat = "dd MMMM"
+        formatter2.dateFormat = "dd MMMM YYYY"
         
         let batch = Firestore.firestore().batch()
         
         let report_ref = Firestore.firestore().collection(Constants.FirebaseDB.jobs_ref).document(job!.jobId).collection(Constants.FirebaseDB.reports_ref).document(currentReport.reportId)
         
-        if onBreak == false {
-            
-            onBreak.toggle()
+        if currentReport.reportStatus == "Clocked in" {
             
             batch.updateData([
                 Constants.FirebaseDB.clocking_messages: FieldValue.arrayUnion(["Started break at \(formatter.string(from: Date())) on the \(formatter2.string(from: Date()))"]), Constants.FirebaseDB.report_status: Constants.Report.onBreak
                 ], forDocument: report_ref)
             
-            clockingButtonTitle()
         } else {
-            
-            onBreak.toggle()
             
             batch.updateData([
                 Constants.FirebaseDB.clocking_messages: FieldValue.arrayUnion(["Ended break at \(formatter.string(from: Date())) on the \(formatter2.string(from: Date()))"]), Constants.FirebaseDB.report_status: Constants.Report.clockedIn
                 ], forDocument: report_ref)
-            
-            clockingButtonTitle()
         }
+        
+        clockingButtonTitle()
         
         batch.commit() { err in
             

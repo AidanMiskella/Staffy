@@ -11,6 +11,7 @@ import Foundation
 class User {
     
     var userId: String
+    var email: String
     var firstName: String
     var lastName: String
     var avatarURL: URL?
@@ -28,6 +29,7 @@ class User {
     var jobsCompleted: Int?
     
     init(userId: String,
+         email: String,
          firstName: String,
          lastName: String,
          avatarURL: URL,
@@ -45,6 +47,7 @@ class User {
          jobsCompleted: Int?) {
         
         self.userId = userId
+        self.email = email
         self.firstName = firstName
         self.lastName = lastName
         self.avatarURL = avatarURL

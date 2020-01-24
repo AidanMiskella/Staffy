@@ -50,27 +50,27 @@
                                     <action selector="categoryChanged:" destination="Dia-Xb-Q3W" eventType="valueChanged" id="9UZ-wJ-Udl"/>
                                 </connections>
                             </segmentedControl>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search for a job..." translatesAutoresizingMaskIntoConstraints="NO" id="BLn-Cb-LJx">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search for a job..." showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BLn-Cb-LJx">
                                 <rect key="frame" x="0.0" y="88" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rk9-f0-L6X">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="115" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rk9-f0-L6X">
                                 <rect key="frame" x="0.0" y="188" width="414" height="729"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="JobCell" id="E1k-Ua-Meg" customClass="JobTableViewCell" customModule="Staffy" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="110"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="115"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="E1k-Ua-Meg" id="gwz-3J-xNf">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="109.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="114.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zvY-jf-32N">
-                                                    <rect key="frame" x="22" y="15" width="60" height="60"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KKb-q9-KSo">
+                                                    <rect key="frame" x="21" y="13" width="65" height="65"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Llr-hG-T4x" customClass="CosmosView" customModule="Cosmos">
-                                                    <rect key="frame" x="20" y="78" width="64" height="15"/>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RcJ-tC-QH6" customClass="CosmosView" customModule="Cosmos">
+                                                    <rect key="frame" x="18" y="82" width="71" height="15"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <userDefinedRuntimeAttributes>
@@ -86,33 +86,36 @@
                                                             <real key="value" value="12"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="starMargin">
-                                                            <real key="value" value="1"/>
+                                                            <real key="value" value="2"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
+                                                            <integer key="value" value="2"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F3a-M6-eAi">
-                                                    <rect key="frame" x="98" y="42" width="285" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2nc-6l-q4g">
+                                                    <rect key="frame" x="101" y="38" width="285" height="19"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tp-On-5Eg">
-                                                    <rect key="frame" x="275" y="78" width="119" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NaB-Ci-PrS">
+                                                    <rect key="frame" x="240" y="79" width="155" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9KJ-JC-rZl">
-                                                    <rect key="frame" x="98" y="60" width="285" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.90000000000000002" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Og-oX-nTZ">
+                                                    <rect key="frame" x="101" y="56" width="285" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VZz-sn-jDh">
-                                                    <rect key="frame" x="98" y="20" width="285" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvm-w8-IlT">
+                                                    <rect key="frame" x="101" y="17" width="285" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
@@ -121,12 +124,12 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="companyImageView" destination="zvY-jf-32N" id="psz-eQ-vWb"/>
-                                            <outlet property="companyStarRating" destination="Llr-hG-T4x" id="NOD-wA-BXb"/>
-                                            <outlet property="jobCompanyNameLabel" destination="F3a-M6-eAi" id="bLb-o5-Ol9"/>
-                                            <outlet property="jobLocationLabel" destination="9KJ-JC-rZl" id="F6o-L2-uBS"/>
-                                            <outlet property="jobPostedTimeLabel" destination="2tp-On-5Eg" id="XEc-Mu-IJU"/>
-                                            <outlet property="jobTitleLabel" destination="VZz-sn-jDh" id="F5c-7b-O2d"/>
+                                            <outlet property="companyImageView" destination="KKb-q9-KSo" id="ig5-vR-j4O"/>
+                                            <outlet property="companyStarRating" destination="RcJ-tC-QH6" id="KiO-k5-Z8K"/>
+                                            <outlet property="jobCompanyNameLabel" destination="2nc-6l-q4g" id="yLA-a2-IeZ"/>
+                                            <outlet property="jobLocationLabel" destination="8Og-oX-nTZ" id="9Wr-ne-5vb"/>
+                                            <outlet property="jobPostedTimeLabel" destination="NaB-Ci-PrS" id="IQr-h3-2aP"/>
+                                            <outlet property="jobTitleLabel" destination="kvm-w8-IlT" id="TaZ-Gw-AoY"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -152,6 +155,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <size key="freeformSize" width="414" height="1000"/>
                     <connections>
+                        <outlet property="searchBar" destination="BLn-Cb-LJx" id="gv7-Vr-TCd"/>
                         <outlet property="segmentControl" destination="6qH-Mg-Doz" id="r9V-WV-vlh"/>
                         <outlet property="tableView" destination="rk9-f0-L6X" id="vHr-1S-hHN"/>
                         <segue destination="CuM-zM-C2k" kind="show" identifier="goToJobDetails" id="1tM-mT-fiT"/>

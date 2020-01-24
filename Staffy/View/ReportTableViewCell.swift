@@ -13,14 +13,25 @@ import FirebaseAuth
 class ReportTableViewCell: UITableViewCell {
     
     @IBOutlet weak var clockingSymbolImageView: UIImageView!
+        
+    @IBOutlet weak var clockingLabelDate: UILabel!
     
-    @IBOutlet weak var clockingLabel: UILabel!
+    @IBOutlet weak var clockingLabelTime: UILabel!
+    
+    var clockingStatus: String!
+    var time: String!
+    var date: String!
     
     func setCell(currentReport: Report, clocking: String) {
         
-        Utilities.styleLabel(label: clockingLabel, font: .reportTableRow, fontColor: .black)
+        Utilities.styleLabel(label: clockingLabelDate, font: .reportTableRow, fontColor: .black)
         
-        clockingLabel.text = clocking
+        clockingStatus = "\(clocking.components(separatedBy: " ")[0]) \(clocking.components(separatedBy: " ")[1])"
+        time = "\(clocking.components(separatedBy: " ")[3])"
+        date = "\(clocking.components(separatedBy: " ")[6]) \(clocking.components(separatedBy: " ")[7]) \(clocking.components(separatedBy: " ")[8])"
+        
+        clockingLabelDate.text = "\(date!)"
+        clockingLabelTime.text = "\(clockingStatus!) @ \(time!)"
         
         if clocking.contains("Clocked in") {
             
