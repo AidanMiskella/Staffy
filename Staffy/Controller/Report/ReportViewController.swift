@@ -160,7 +160,7 @@ class ReportViewController: UIViewController {
     
     @IBAction func nextButton(_ sender: Any) {
         
-        if Calendar.current.isDateInToday(self.job!.endDate.dateValue()) && currentReport.reportStatus == Constants.Report.clockedOut {
+        if (Calendar.current.isDateInToday(self.job!.endDate.dateValue()) && currentReport.reportStatus == Constants.Report.clockedOut) || currentReport.reportOpen == false {
             
             performSegue(withIdentifier: "goToEmployerFeedback", sender: self)
         } else {
@@ -186,7 +186,7 @@ class ReportViewController: UIViewController {
                 statusLabel.text = Constants.Report.notClockedIn
                 breakButton.backgroundColor = .gray
                 breakButton.isEnabled = false
-                Utilities.styleImage(imageView: statusImageView, image: "dot", imageColor: .red)
+                Utilities.styleImage(imageView: statusImageView, image: "dot", imageColor: .orange)
             }
             
            else if currentReport.reportStatus == Constants.Report.clockedIn {
@@ -230,7 +230,7 @@ class ReportViewController: UIViewController {
             clockingButton.backgroundColor = .gray
             clockingButton.isEnabled = false
             statusLabel.text = Constants.Report.reportComlpete
-            Utilities.styleImage(imageView: statusImageView, image: "dot", imageColor: .green)
+            Utilities.styleImage(imageView: statusImageView, image: "dot", imageColor: .lightBlue)
         }
     }
     

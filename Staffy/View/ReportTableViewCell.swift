@@ -28,7 +28,7 @@ class ReportTableViewCell: UITableViewCell {
         
         clockingStatus = "\(clocking.components(separatedBy: " ")[0]) \(clocking.components(separatedBy: " ")[1])"
         time = "\(clocking.components(separatedBy: " ")[3])"
-        date = "\(clocking.components(separatedBy: " ")[6]) \(clocking.components(separatedBy: " ")[7]) \(clocking.components(separatedBy: " ")[8])"
+        date = "\(clocking.components(separatedBy: " ")[7]) \(clocking.components(separatedBy: " ")[8]) \(clocking.components(separatedBy: " ")[9])"
         
         clockingLabelDate.text = "\(date!)"
         clockingLabelTime.text = "\(clockingStatus!) @ \(time!)"
