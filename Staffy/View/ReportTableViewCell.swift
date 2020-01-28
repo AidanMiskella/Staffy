@@ -25,10 +25,11 @@ class ReportTableViewCell: UITableViewCell {
     func setCell(currentReport: Report, clocking: String) {
         
         Utilities.styleLabel(label: clockingLabelDate, font: .reportTableRow, fontColor: .black)
+        Utilities.styleLabel(label: clockingLabelTime, font: .reportTableRow, fontColor: .black)
         
         clockingStatus = "\(clocking.components(separatedBy: " ")[0]) \(clocking.components(separatedBy: " ")[1])"
         time = "\(clocking.components(separatedBy: " ")[3])"
-        date = "\(clocking.components(separatedBy: " ")[7]) \(clocking.components(separatedBy: " ")[8]) \(clocking.components(separatedBy: " ")[9])"
+        date = "\(clocking.components(separatedBy: " ")[6]) \(clocking.components(separatedBy: " ")[7]) \(clocking.components(separatedBy: " ")[8])"
         
         clockingLabelDate.text = "\(date!)"
         clockingLabelTime.text = "\(clockingStatus!) @ \(time!)"

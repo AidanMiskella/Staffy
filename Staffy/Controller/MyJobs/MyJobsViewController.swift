@@ -48,12 +48,13 @@ class MyJobsViewController: UIViewController {
         getJobCount()
         segmentControl.tintColor = .lightBlue
         segmentControl.addUnderlineForSelectedSegment()
-        segmentControl.setFontSize(10)
         
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
         searchBar.tintColor = .lightBlue
+        
+        navigationItem.titleView?.sizeToFit()
         
         jobs_ref = Firestore.firestore().collection(Constants.FirebaseDB.jobs_ref)
     }

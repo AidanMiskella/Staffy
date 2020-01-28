@@ -11,7 +11,17 @@ import UIKit
 
 extension UISegmentedControl {
     
-    func setFontSize(_ size: CGFloat) {
+    func setFontSize() {
+        
+        var size: CGFloat
+        
+        if UIScreen.main.bounds.size.width > 350 {
+            
+            size = 10
+        } else {
+            
+            size = 8
+        }
         
         let font = UIFont(name: "AvenirNext-Bold", size: size)!
         setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
@@ -31,7 +41,8 @@ extension UISegmentedControl {
     
     func addUnderlineForSelectedSegment(){
         removeBorder()
-        let underlineWidth: CGFloat = self.bounds.size.width / CGFloat(self.numberOfSegments)
+        setFontSize()
+        let underlineWidth: CGFloat = UIScreen.main.bounds.size.width / CGFloat(self.numberOfSegments)
         let underlineHeight: CGFloat = 2.0
         let underlineXPosition = CGFloat(selectedSegmentIndex * Int(underlineWidth))
         let underLineYPosition = self.bounds.size.height - 1.0

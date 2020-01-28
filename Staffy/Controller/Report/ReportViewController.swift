@@ -82,6 +82,11 @@ class ReportViewController: UIViewController {
         })
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        avatarImageView.layer.cornerRadius = avatarImageView.frame.height / 2.0
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         
         if clockingsListener != nil {

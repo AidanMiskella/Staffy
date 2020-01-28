@@ -33,6 +33,11 @@ class EmployeeFeedbackViewController: UIViewController {
         connectOutlets()
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        avatarImageView.layer.cornerRadius = avatarImageView.frame.height / 2.0
+    }
+    
     func setupElements() {
         
         Utilities.styleTextView(textView: commentsTextView, font: .editProfileText, fontColor: .black)

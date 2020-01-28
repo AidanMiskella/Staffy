@@ -84,6 +84,11 @@ class JobViewController: UIViewController {
         })
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        avatarImageView.layer.cornerRadius = avatarImageView.frame.height / 2.0
+    }
+    
     func setListener() {
         
         jobsListener = jobs_ref
@@ -145,20 +150,20 @@ class JobViewController: UIViewController {
         
         companyRating.isUserInteractionEnabled = false
         
-        avatarImageView.layer.borderWidth = 1
-        avatarImageView.layer.masksToBounds = false
-        avatarImageView.layer.borderColor = UIColor.gray.cgColor
-        avatarImageView.layer.cornerRadius = avatarImageView.frame.height / 2
-        avatarImageView.clipsToBounds = true
-        
         UserService.observeCompanyProfile(job!.companyId) { (company) in
             
-            self.companyRating.rating = (company!.reviewRating! / Double(company!.jobsCompleted))
+            self.companyRating.rating = self.getStarRating(company: company!)
             ImageService.getImage(withURL: company!.avatarURL!) { (image) in
                 
                 self.avatarImageView.image = image
             }
         }
+        
+        avatarImageView.layer.borderWidth = 1
+        avatarImageView.layer.masksToBounds = false
+        avatarImageView.layer.borderColor = UIColor.gray.cgColor
+        avatarImageView.layer.cornerRadius = avatarImageView.frame.height / 2
+        avatarImageView.clipsToBounds = true
         
         guard let positions = job?.positions,
             let startTime = job?.startTime,
@@ -177,6 +182,17 @@ class JobViewController: UIViewController {
         companyEmailLabel.text = job?.companyEmail
         companyPhoneLabel.text = job?.companyPhone
         jobDescriptionTextView.text = job?.description
+    }
+    
+    func getStarRating(company: Company) -> Double {
+        
+        if company.reviewRating == 0 {
+            
+            return 0
+        } else {
+            
+            return (company.reviewRating! / Double(company.jobsCompleted))
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

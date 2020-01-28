@@ -119,7 +119,7 @@ class RegisterViewController: UIViewController {
         
         let storageRef = Storage.storage().reference().child("avatars").child(userId)
         
-        if let uploadData = UIImage(named: "image-placeholder")?.pngData() {
+        if let uploadData = UIImage(named: "image-placeholder")?.jpegData(compressionQuality: 0.5) {
             
             storageRef.putData(uploadData, metadata: nil) { (metaData, error) in
                 

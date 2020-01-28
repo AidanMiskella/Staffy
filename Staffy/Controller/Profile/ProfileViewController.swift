@@ -11,6 +11,7 @@ import Firebase
 import FirebaseAuth
 import Cosmos
 import ImagePicker
+import GrowingTextView
 
 class ProfileViewController: UIViewController, ImagePickerDelegate {
     
@@ -26,7 +27,7 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
     
     @IBOutlet weak var ratingLabel: UILabel!
     
-    @IBOutlet weak var bioLabel: UILabel!
+    @IBOutlet weak var bioLabel: GrowingTextView!
     
     @IBOutlet weak var jobAlertView: UIView!
     
@@ -54,8 +55,8 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
                 UserService.observeUserProfile(user!.uid, completion: { (user) in
                     
                     UserService.currentUser = user
-                    self.setUpProfile()
                     self.dataCells = self.createArray()
+                    self.setUpProfile()
                     self.tableView.reloadData()
                     self.setListener()
                 })
@@ -75,22 +76,28 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
 
         // Do any additional setup after loading the view.
         setUpElements()
+        setUpProfile()
         topProfileImageView.backgroundColor = .lightBlue
         dataCells = createArray()
-        
+
         tableView.delegate = self
         tableView.dataSource = self
-        
+
         jobsCollectionRef = Firestore.firestore().collection(Constants.FirebaseDB.jobs_ref)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        profileImage.layer.cornerRadius = profileImage.frame.height / 2.0
     }
     
     func setUpElements() {
 
         Utilities.styleLabel(label: ratingLabel, font: .subTitle, fontColor: .gray)
-        Utilities.styleLabel(label: bioLabel, font: .subTitle, fontColor: .darkGray)
+        Utilities.styleTextView(textView: bioLabel, font: .subTitle, fontColor: .lightGray)
         Utilities.styleLabel(label: jobAlertLabel, font: .subTitle, fontColor: .white)
         
-        contentView.roundCorners([.topLeft, .topRight], radius: 30.0)
+        middleRatingView.roundCorners([.topRight, .topLeft], radius: 30.0)
         
         bioLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(bioTapped)))
         bioLabel.sizeToFit()
@@ -100,7 +107,7 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
         
         profileImage.layer.borderWidth = 4
         profileImage.layer.masksToBounds = false
-        profileImage.layer.borderColor = UIColor.white.cgColor
+        profileImage.layer.borderColor = UIColor.gray.cgColor
         profileImage.layer.cornerRadius = profileImage.frame.height / 2
         profileImage.clipsToBounds = true
         profileImage.isUserInteractionEnabled = true
@@ -118,9 +125,20 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
             self.profileImage.image = image
         }
         
-        ratingView.rating = (currentUser.reviewRating! / Double(currentUser.jobsCompleted!))
-        ratingLabel.text = getRatingText(rating: (currentUser.reviewRating! / Double(currentUser.jobsCompleted!)))
+        ratingView.rating = getStarRating()
+        ratingLabel.text = getRatingText()
         bioLabel.text = currentUser.bio
+    }
+    
+    func getStarRating() -> Double {
+        
+        if UserService.currentUser?.reviewRating == 0 {
+            
+            return 0
+        } else {
+            
+            return (UserService.currentUser!.reviewRating! / Double(UserService.currentUser!.jobsCompleted!))
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -164,13 +182,14 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
         }
     }
     
-    func getRatingText(rating: Double) -> String {
+    func getRatingText() -> String {
     
-        if rating == 0.0 {
+        if UserService.currentUser?.reviewRating == 0 {
             
             return "No reviews yet"
         } else {
             
+            let rating = (UserService.currentUser!.reviewRating! / Double(UserService.currentUser!.jobsCompleted!))
             return String(format: "%.1f of 5 Star Rating", rating)
         }
     }
@@ -200,7 +219,7 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
             .document(Auth.auth().currentUser!.uid)
         let storageRef = Storage.storage().reference().child("avatars").child(Auth.auth().currentUser!.uid)
         
-        if let uploadData = images[0].pngData() {
+        if let uploadData = images[0].jpegData(compressionQuality: 0.5) {
             
             storageRef.putData(uploadData, metadata: nil) { (metaData, error) in
                 
@@ -281,26 +300,25 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
 }
 
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+
         return dataCells.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+
         let profileData = dataCells[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell") as! ProfileTableViewCell
-        
+
         cell.setCell(profileData: profileData)
-        
+
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+
         self.performSegue(withIdentifier: dataCells[indexPath.row].title, sender: self)
     }
-
 }
 
