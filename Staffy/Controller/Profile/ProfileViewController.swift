@@ -94,7 +94,7 @@ class ProfileViewController: UIViewController, ImagePickerDelegate {
     func setUpElements() {
 
         Utilities.styleLabel(label: ratingLabel, font: .subTitle, fontColor: .gray)
-        Utilities.styleTextView(textView: bioLabel, font: .subTitle, fontColor: .lightGray)
+        Utilities.styleTextView(textView: bioLabel, font: .editProfileText, fontColor: .darkGray)
         Utilities.styleLabel(label: jobAlertLabel, font: .subTitle, fontColor: .white)
         
         middleRatingView.roundCorners([.topRight, .topLeft], radius: 30.0)

@@ -258,9 +258,6 @@
                                                             <constraint firstAttribute="width" constant="165" id="kOr-9U-A4i"/>
                                                             <constraint firstAttribute="height" constant="165" id="pBK-Fw-FFP"/>
                                                         </constraints>
-                                                        <connections>
-                                                            <outletCollection property="gestureRecognizers" destination="rDH-X2-Bw3" appends="YES" id="s5y-Zp-TlK"/>
-                                                        </connections>
                                                     </imageView>
                                                 </subviews>
                                                 <constraints>
@@ -350,77 +347,6 @@
                 <tapGestureRecognizer id="FkW-lK-VkY"/>
             </objects>
             <point key="canvasLocation" x="-420.28985507246381" y="50.892857142857139"/>
-        </scene>
-        <!--Me-->
-        <scene sceneID="pGf-WJ-Yri">
-            <objects>
-                <viewController id="qCP-br-l7A" customClass="ProfileViewController" customModule="Staffy" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Vzi-CS-bv3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i3z-07-RQA">
-                                <rect key="frame" x="0.0" y="293" width="414" height="624"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rqc-Vf-sVo" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="624"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="Rqc-Vf-sVo" firstAttribute="top" secondItem="i3z-07-RQA" secondAttribute="top" id="QsL-BU-nJS"/>
-                                    <constraint firstItem="Rqc-Vf-sVo" firstAttribute="width" secondItem="i3z-07-RQA" secondAttribute="width" id="bUA-7z-t2r"/>
-                                    <constraint firstItem="Rqc-Vf-sVo" firstAttribute="height" secondItem="i3z-07-RQA" secondAttribute="height" priority="250" id="lv5-dr-cgl"/>
-                                    <constraint firstAttribute="trailing" secondItem="Rqc-Vf-sVo" secondAttribute="trailing" id="t3o-PC-Cco"/>
-                                    <constraint firstItem="Rqc-Vf-sVo" firstAttribute="leading" secondItem="i3z-07-RQA" secondAttribute="leading" id="uXB-Hi-Qf4"/>
-                                    <constraint firstAttribute="bottom" secondItem="Rqc-Vf-sVo" secondAttribute="bottom" id="xdf-wO-OMh"/>
-                                    <constraint firstItem="Rqc-Vf-sVo" firstAttribute="centerX" secondItem="i3z-07-RQA" secondAttribute="centerX" id="z9B-5V-f87"/>
-                                </constraints>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="i3z-07-RQA" firstAttribute="leading" secondItem="Vzi-CS-bv3" secondAttribute="leading" id="FbD-vj-ARz"/>
-                            <constraint firstItem="i3z-07-RQA" firstAttribute="bottom" secondItem="miX-iu-QF0" secondAttribute="bottom" id="q23-Ih-3dI"/>
-                            <constraint firstAttribute="trailing" secondItem="i3z-07-RQA" secondAttribute="trailing" id="tVY-Pl-hAd"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="miX-iu-QF0"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Me" image="userSmall" id="Qzc-GN-IXu"/>
-                    <navigationItem key="navigationItem" id="xDa-JX-YeZ">
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="yod-Vc-R48">
-                            <connections>
-                                <action selector="logoutTapped:" destination="qCP-br-l7A" id="Usl-JS-2E0"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="414" height="1000"/>
-                    <connections>
-                        <outlet property="bioLabel" destination="6IE-ms-DWR" id="phC-FQ-oZM"/>
-                        <outlet property="contentView" destination="Rqc-Vf-sVo" id="bJ7-2w-BGg"/>
-                        <outlet property="jobAlertImage" destination="tl8-ei-bsg" id="sXt-8c-HxL"/>
-                        <outlet property="jobAlertLabel" destination="CMb-Lu-hjt" id="BU8-dh-8Jk"/>
-                        <outlet property="jobAlertView" destination="JAd-X6-rQ2" id="C6o-qV-frP"/>
-                        <outlet property="logoutButton" destination="yod-Vc-R48" id="tWi-la-h00"/>
-                        <outlet property="middleRatingView" destination="e0s-4R-NvS" id="gmd-Ti-K0J"/>
-                        <outlet property="profileImage" destination="VkS-hz-280" id="Ebr-ne-Msk"/>
-                        <outlet property="ratingLabel" destination="qPN-Me-Tsf" id="tNg-Zp-wZ9"/>
-                        <outlet property="ratingView" destination="jT5-z4-eZC" id="7vc-z4-3TE"/>
-                        <outlet property="tableView" destination="wCY-lL-oWa" id="oBs-xJ-ovf"/>
-                        <outlet property="topProfileImageView" destination="XeL-Tb-WBo" id="l3D-rM-vpS"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8vN-aQ-hJO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="rDH-X2-Bw3">
-                    <connections>
-                        <action selector="profileImageTapped:" destination="qCP-br-l7A" id="0Bn-ak-RrE"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="5GP-WX-2aq"/>
-            </objects>
-            <point key="canvasLocation" x="872" y="51"/>
         </scene>
     </scenes>
     <resources>
