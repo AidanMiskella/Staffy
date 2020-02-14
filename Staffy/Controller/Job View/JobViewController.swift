@@ -161,7 +161,7 @@ class JobViewController: UIViewController {
         
         avatarImageView.layer.borderWidth = 1
         avatarImageView.layer.masksToBounds = false
-        avatarImageView.layer.borderColor = UIColor.gray.cgColor
+        avatarImageView.layer.borderColor = UIColor.white.cgColor
         avatarImageView.layer.cornerRadius = avatarImageView.frame.height / 2
         avatarImageView.clipsToBounds = true
         

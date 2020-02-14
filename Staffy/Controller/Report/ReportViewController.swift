@@ -17,10 +17,6 @@ class ReportViewController: UIViewController {
     @IBOutlet weak var avatarImageView: UIImageView!
     
     @IBOutlet weak var nameLabel: UILabel!
-    
-    @IBOutlet weak var userEmailLabel: UILabel!
-    
-    @IBOutlet weak var userPhoneLabel: UILabel!
         
     @IBOutlet weak var statusImageView: UIImageView!
     
