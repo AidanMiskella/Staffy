@@ -48,7 +48,12 @@ class UserService {
                     let jobsCompleted = data[Constants.FirebaseDB.jobs_completed] as? Int,
                     let url = URL(string: avatarURL) {
                         
-                        user = User(userId: userId, email: email, firstName: firstName, lastName: lastName, avatarURL: url, bio: bio, reviewRating: reviewRating, mobile: mobile, documents: documents, address: address, gender: gender, dateOfBirth: dateOfBirth, dateProfileCreated: dateProfileCreated, jobsApplied: jobsApplied, allApplications: allApplications, jobsAccepted: jobsAccepted, jobsCompleted: jobsCompleted)
+                        user = User(userId: userId, email: email, firstName: firstName, lastName: lastName,
+                                    avatarURL: url, bio: bio, reviewRating: reviewRating, mobile: mobile,
+                                    documents: documents, address: address, gender: gender, dateOfBirth: dateOfBirth,
+                                    dateProfileCreated: dateProfileCreated, jobsApplied: jobsApplied,
+                                    allApplications: allApplications, jobsAccepted: jobsAccepted,
+                                    jobsCompleted: jobsCompleted)
                     }
                     
                     completion(user)
